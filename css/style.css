@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #566593;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+header {
+  background-color: #f4ffcf;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1019607843);
+}
+header nav.navbar {
+  padding: 23px 0;
+}
+header nav.navbar .nav-link {
+  margin-left: 20px;
+  color: #0a3366;
+  display: flex;
+  align-items: center;
+}
+header nav.navbar .nav-link::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: url(../images/nav-link-icon.svg);
+  display: inline-block;
+  margin-left: 5px;
+}
+header nav.navbar .header-icons {
+  display: flex;
+  align-items: center;
+}
+header nav.navbar .header-icons li + li {
+  margin-left: 15px;
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 78px;
+  color: #0a3366;
+}
+
+.banner-sec {
+  background-color: #f4ffcf;
+  background-image: url(../images/banner-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 160px 0;
+  position: relative;
+}
+
+.banner-content {
+  padding-left: 70px;
+  position: relative;
+}
+.banner-content p {
+  padding: 12px 20px 12px 24px;
+  margin: 20px 0 40px 0;
+  background: linear-gradient(82.2deg, rgba(10, 51, 102, 0.1) 0%, rgba(10, 51, 102, 0) 80%);
+  border-left: 4px solid #0a3366;
+}
+.banner-content .face-img-1 {
+  position: absolute;
+  top: -130px;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+.banner-content .face-img-1 img {
+  border-radius: 50%;
+}
+.banner-content .face-img-1 span {
+  width: 1px;
+  height: 600px;
+  background-color: #fff;
+  display: inline-block;
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.banner-content .face-img-1::before, .banner-content .face-img-1::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+.banner-content .face-img-1::after {
+  width: 140px;
+  height: 140px;
+  top: -20px;
+  left: -20px;
+}
+
+.banner-img {
+  position: absolute;
+  right: 50px;
+  bottom: 0;
+  max-width: 640px;
+}
+.banner-img svg {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.banner-img :nth-child(2) {
+  left: unset;
+  right: 0;
+  top: 310px;
+}
+
+.button {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px 8px 25px;
+  border-radius: 16px;
+  transition: all ease-in-out 0.3s;
+}
+.button .icon {
+  background-color: #fff;
+  color: #0a3366;
+  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.primary-btn {
+  background: #0a3366;
+  color: #fff;
+}
+.primary-btn:hover {
+  background-color: #f46700;
+  color: #fff;
+}
+
+.secondary-btn {
+  background: #f46700;
+  color: #fff;
+}
+.secondary-btn:hover {
+  background-color: #0a3366;
+  color: #fff;
+}/*# sourceMappingURL=style.css.map */
