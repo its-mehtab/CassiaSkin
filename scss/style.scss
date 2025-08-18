@@ -15,6 +15,7 @@ html {
 
 a {
   text-decoration: none;
+  display: inline-block;
 }
 
 ul {
@@ -34,6 +35,17 @@ body {
   .container {
     max-width: 1280px;
   }
+}
+
+.sp-tb {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.sp-t {
+  padding-top: 80px;
+}
+.sp-b {
+  padding-bottom: 80px;
 }
 
 header {
@@ -74,11 +86,24 @@ img {
   width: 100%;
 }
 
-h1 {
+h1,
+.common-head {
   font-weight: 700;
   font-size: 6rem;
-  line-height: 78px;
+  line-height: 7.8rem;
   color: #0a3366;
+}
+
+.common-head {
+  font-size: 4.5rem;
+  line-height: 6rem;
+}
+
+.bg-1 {
+  background-color: $bg-color1;
+}
+.bg-2 {
+  background-color: $bg-color2;
 }
 
 .banner-sec {
@@ -89,6 +114,18 @@ h1 {
   background-position: center;
   padding: 160px 0;
   position: relative;
+
+  .face-img-2 {
+    position: absolute;
+    bottom: 30px;
+    left: 45%;
+    transform: translateX(-50%);
+    border-bottom-right-radius: 50px;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    overflow: hidden;
+  }
 }
 
 .banner-content {
@@ -109,7 +146,7 @@ h1 {
   .face-img-1 {
     position: absolute;
     top: -130px;
-    left: 0;
+    left: -30px;
     width: 100px;
     height: 100px;
 
@@ -206,5 +243,79 @@ h1 {
   &:hover {
     background-color: $primary-color;
     color: #fff;
+  }
+}
+
+.about-sec {
+  position: relative;
+
+  .about-face-img {
+    width: 150px;
+    position: absolute;
+    bottom: 40px;
+    right: 80px;
+  }
+}
+
+.marquee-1 {
+  background-color: $primary-color;
+
+  h4 {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 38px;
+    text-transform: capitalize;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      width: 20px;
+      min-width: 20px;
+      height: 20px;
+      display: inline-block;
+      background-image: url(../images/marqee-icon.svg);
+      background-size: contain;
+      background-position: center;
+      margin-right: 20px;
+    }
+  }
+}
+
+.skin-care-box {
+  background-color: $primary-color;
+  border-radius: 15px;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  img,
+  p,
+  ul {
+    display: none;
+  }
+}
+
+.skin-care-box.skin-care-active {
+  background-color: #fff;
+  min-width: 400px;
+  border-radius: 20px;
+
+  h3 {
+    color: $primary-color;
+  }
+
+  img,
+  p,
+  ul {
+    display: block;
   }
 }
