@@ -66,3 +66,8 @@ new Swiper(".skin-care-slider", {
   slidesPerView: 5,
   spaceBetween: 20,
 });
+
+new Swiper(".products-slider", {
+  slidesPerView: 4,
+  spaceBetween: 20,
+});
