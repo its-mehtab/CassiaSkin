@@ -259,6 +259,15 @@ h1,
   margin-right: 20px;
 }
 
+.skin-care-slider .swiper-slide {
+  flex: 0 0 100px;
+  width: 100px;
+}
+.skin-care-slider .swiper-slide-active {
+  width: calc(100% - 480px);
+  flex: 0 0 calc(100% - 480px);
+}
+
 .skin-care-box {
   background-color: #0a3366;
   border-radius: 15px;
@@ -268,21 +277,63 @@ h1,
   font-weight: 700;
   color: #fff;
 }
-.skin-care-box img,
+.skin-care-box h3:not(.skin-care-active h3) {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+.skin-care-box .skin-care-box-image,
 .skin-care-box p,
 .skin-care-box ul {
   display: none;
 }
+.skin-care-box ul {
+  margin-top: 20px;
+}
+.skin-care-box ul li {
+  padding: 6px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #566593;
+  font-weight: 500;
+}
+.skin-care-box ul li:before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url(../images/skin-list-icon.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
 
 .skin-care-box.skin-care-active {
+  display: flex;
+  align-items: center;
+  gap: 30px;
   background-color: #fff;
   min-width: 400px;
   border-radius: 20px;
+  padding: 30px;
+}
+.skin-care-box.skin-care-active .skin-care-box-image {
+  width: 250px;
+  height: 400px;
+  min-width: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.skin-care-box.skin-care-active .skin-care-box-image img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .skin-care-box.skin-care-active h3 {
   color: #0a3366;
 }
-.skin-care-box.skin-care-active img,
+.skin-care-box.skin-care-active .skin-care-box-image,
 .skin-care-box.skin-care-active p,
 .skin-care-box.skin-care-active ul {
   display: block;
@@ -314,9 +365,14 @@ h1,
 .product-item {
   background-color: #fff;
   border-radius: 15px;
+  overflow: hidden;
+}
+.product-item:hover .product-icons {
+  bottom: 15px;
 }
 .product-item .product-img {
   position: relative;
+  overflow: hidden;
 }
 .product-item .product-img .offer-text {
   position: absolute;
@@ -363,8 +419,88 @@ h1,
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  color: #0a3366;
   background-color: #efe9e9;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all ease-in-out 0.3s;
+}
+.arrow-btn:hover {
+  color: #fff;
+  background-color: #f46700;
+}
+
+.product-icons {
+  position: absolute;
+  left: 50%;
+  bottom: -100%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.product-icons li a {
+  background-color: #f46700;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px;
+  min-width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.product-icons li:first-child a {
+  background-color: #0a3366;
+  text-wrap: nowrap;
+  font-size: 16px;
+}
+.product-icons li + li {
+  margin-left: 5px;
+}
+
+.features-item {
+  padding-top: 40px;
+}
+.features-item .features-icon {
+  width: 94px;
+  height: 94px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #0a3366;
+  color: #fff;
+}
+.features-item h3 {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 39px;
+  text-transform: capitalize;
+  color: #0a3366;
+  margin: 20px 0 10px 0;
+}
+
+.why-us-item ul {
+  -moz-column-count: 2;
+       column-count: 2;
+  margin: 30px 0;
+}
+.why-us-item ul li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+.why-us-item ul li:before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url(../images/skin-list-icon.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
 }/*# sourceMappingURL=style.css.map */
