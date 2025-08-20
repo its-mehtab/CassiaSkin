@@ -278,7 +278,8 @@ h1,
   color: #fff;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) .skin-care-box {
-  display: none;
+  width: 0;
+  min-width: 0px;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) .skin-item {
   height: 460px;
@@ -297,7 +298,6 @@ h1,
 .skin-care-slider .swiper-slide:not(.skin-care-active) .skin-item:hover .arrow-btn {
   background-color: #f46700;
   color: #fff;
-  transform: rotate(45deg);
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) .skin-item::after {
   content: "";
@@ -317,8 +317,7 @@ h1,
   top: 0;
   left: 0;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -2;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) h3 {
@@ -333,11 +332,11 @@ h1,
   display: none;
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box {
+  transition: all ease-in-out 0.3s;
   display: flex;
   align-items: center;
   gap: 30px;
   background-color: #fff;
-  min-width: 400px;
   border-radius: 20px;
   padding: 30px;
 }
@@ -350,8 +349,7 @@ h1,
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box .skin-care-box-image img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box h3 {
   color: #0a3366;
@@ -524,8 +522,7 @@ h1,
 }
 
 .why-us-item ul {
-  -moz-column-count: 2;
-       column-count: 2;
+  column-count: 2;
   margin: 20px 0;
 }
 .why-us-item ul li {
@@ -559,6 +556,9 @@ h1,
   display: flex;
   align-items: center;
   gap: 12px;
+}
+.why-us-item .why-us-img2 .google-rating img {
+  width: 60px;
 }
 .why-us-item .why-us-img2 .google-rating .star-wrap {
   display: flex;

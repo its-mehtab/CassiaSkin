@@ -79,10 +79,12 @@ skinItemBtn.forEach((currBtn) => {
   currBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    console.log(e.target.closest(".swiper-slide"));
+    const sliderBox = e.target.closest(".swiper-slide");
 
     sliderItem.forEach((currSlider) => {
       currSlider.classList.remove("skin-care-active");
     });
+
+    sliderBox.classList.add("skin-care-active");
   });
 });

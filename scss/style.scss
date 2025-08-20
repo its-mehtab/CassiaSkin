@@ -310,7 +310,9 @@ h1,
 
     &:not(.skin-care-active) {
       .skin-care-box {
-        display: none;
+        // display: none;
+        width: 0;
+        min-width: 0px;
       }
 
       .skin-item {
@@ -331,7 +333,6 @@ h1,
           .arrow-btn {
             background-color: $secondary-color;
             color: #fff;
-            transform: rotate(45deg);
           }
         }
 
@@ -374,11 +375,12 @@ h1,
       }
 
       .skin-care-box {
+        transition: all ease-in-out 0.3s;
         display: flex;
         align-items: center;
         gap: 30px;
         background-color: #fff;
-        min-width: 400px;
+        // min-width: 400px;
         border-radius: 20px;
         padding: 30px;
 
@@ -639,6 +641,10 @@ h1,
       display: flex;
       align-items: center;
       gap: 12px;
+
+      img {
+        width: 60px;
+      }
 
       .star-wrap {
         display: flex;
