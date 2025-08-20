@@ -71,3 +71,18 @@ new Swiper(".products-slider", {
   slidesPerView: 4,
   spaceBetween: 20,
 });
+
+const skinItemBtn = document.querySelectorAll(".skin-item");
+const sliderItem = document.querySelectorAll(".skin-care-slider .swiper-slide");
+
+skinItemBtn.forEach((currBtn) => {
+  currBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    console.log(e.target.closest(".swiper-slide"));
+
+    sliderItem.forEach((currSlider) => {
+      currSlider.classList.remove("skin-care-active");
+    });
+  });
+});

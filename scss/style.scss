@@ -16,11 +16,21 @@ html {
 a {
   text-decoration: none;
   display: inline-block;
+  color: $primary-color;
+  transition: all ease-in-out 0.3s;
+
+  &:hover {
+    color: $secondary-color;
+  }
 }
 
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
 
@@ -291,91 +301,132 @@ h1,
   .swiper-slide {
     flex: 0 0 100px;
     width: 100px;
-  }
 
-  .swiper-slide-active {
-    width: calc(100% - (5 - 1) * 120px);
-    flex: 0 0 calc(100% - (5 - 1) * 120px);
-  }
-}
-
-.skin-care-box {
-  background-color: $primary-color;
-  border-radius: 15px;
-
-  h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-
-    &:not(.skin-care-active h3) {
-      writing-mode: vertical-lr;
-      transform: rotate(180deg);
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
     }
-  }
 
-  .skin-care-box-image,
-  p,
-  ul {
-    display: none;
-  }
+    &:not(.skin-care-active) {
+      .skin-care-box {
+        display: none;
+      }
 
-  ul {
-    margin-top: 20px;
+      .skin-item {
+        height: 460px;
+        background-color: #0a3366;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0 90px;
+        cursor: pointer;
 
-    li {
-      padding: 6px 0;
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #566593;
-      font-weight: 500;
+        &:hover {
+          .arrow-btn {
+            background-color: $secondary-color;
+            color: #fff;
+            transform: rotate(45deg);
+          }
+        }
 
-      &:before {
-        content: "";
-        width: 22px;
-        height: 22px;
-        background-image: url(../images/skin-list-icon.svg);
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: inline-block;
+        &::after {
+          content: "";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #0a3366;
+          opacity: 0.7;
+          border-radius: 15px;
+          z-index: -1;
+          display: inline-block;
+          position: absolute;
+        }
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          object-fit: cover;
+          z-index: -2;
+        }
+      }
+
+      h3 {
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
       }
     }
-  }
-}
 
-.skin-care-box.skin-care-active {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  background-color: #fff;
-  min-width: 400px;
-  border-radius: 20px;
-  padding: 30px;
+    &.skin-care-active {
+      width: calc(100% - (5 - 1) * 120px);
+      flex: 0 0 calc(100% - (5 - 1) * 120px);
 
-  .skin-care-box-image {
-    width: 250px;
-    height: 400px;
-    min-width: 250px;
-    border-radius: 15px;
-    overflow: hidden;
+      .skin-item {
+        display: none;
+      }
 
-    img {
-      height: 100%;
-      object-fit: cover;
+      .skin-care-box {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        background-color: #fff;
+        min-width: 400px;
+        border-radius: 20px;
+        padding: 30px;
+
+        .skin-care-box-image {
+          width: 250px;
+          height: 400px;
+          min-width: 250px;
+          border-radius: 15px;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        h3 {
+          color: $primary-color;
+        }
+      }
+
+      .skin-care-box {
+        ul {
+          margin-top: 20px;
+
+          li {
+            padding: 6px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: $text-color;
+            font-weight: 500;
+
+            &:before {
+              content: "";
+              width: 22px;
+              height: 22px;
+              background-image: url(../images/skin-list-icon.svg);
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              display: inline-block;
+            }
+          }
+        }
+      }
     }
-  }
-
-  h3 {
-    color: $primary-color;
-  }
-
-  .skin-care-box-image,
-  p,
-  ul {
-    display: block;
   }
 }
 
@@ -551,7 +602,7 @@ h1,
 .why-us-item {
   ul {
     column-count: 2;
-    margin: 30px 0;
+    margin: 20px 0;
 
     li {
       display: flex;
@@ -570,5 +621,142 @@ h1,
         display: inline-block;
       }
     }
+  }
+
+  .why-us-img1 {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .why-us-img2 {
+    border-radius: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 50px;
+
+    .google-rating {
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .star-wrap {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+
+        i {
+          font-size: 16px;
+          color: #ffcd37;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        color: $primary-color;
+      }
+    }
+
+    img {
+      border-radius: 20px;
+    }
+  }
+}
+
+.call-btn {
+  color: $primary-color;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  svg {
+    color: $secondary-color;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+}
+
+.faq-sec {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-item {
+  .accordion {
+    margin-top: 30px;
+    padding-bottom: 22px;
+
+    .accordion-item {
+      border: 0;
+      border-radius: 20px;
+      margin-top: 14px;
+    }
+
+    .accordion-button {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 27px;
+      text-transform: capitalize;
+      color: $primary-color;
+      padding: 22px 25px;
+      background: none;
+      box-shadow: none;
+
+      &::after {
+        content: "\f068";
+        font-family: "Font Awesome 7 Free";
+        font-weight: 700;
+        background: none;
+        font-size: 14px;
+        background-color: #f46700;
+        color: #fff;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &.collapsed {
+        &::after {
+          content: "\2b";
+          background-color: #fff;
+          color: #0f0f0f;
+          box-shadow: 0px 2px 20px 6px rgba(204, 204, 204, 0.25);
+        }
+      }
+    }
+
+    .accordion-body {
+      padding: 0 25px 22px 25px;
+      color: $text-color;
+    }
+  }
+}
+
+.faq-img {
+  position: absolute;
+  bottom: 0;
+  right: 60px;
+  max-width: 495px;
+  z-index: 1;
+
+  .img-circle {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 640px;
+    z-index: -1;
   }
 }
