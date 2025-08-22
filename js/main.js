@@ -88,3 +88,23 @@ skinItemBtn.forEach((currBtn) => {
     sliderBox.classList.add("skin-care-active");
   });
 });
+
+// ======================================================================================
+const texts = document.querySelectorAll(".play-btn .text");
+
+texts.forEach((text) => {
+  const chars = text.innerText.split("");
+  const radius = 90;
+  const angleStep = 360 / chars.length;
+
+  text.innerHTML = chars
+    .map(
+      (char, i) =>
+        `<span style="transform: rotate(${
+          i * angleStep
+        }deg) translateY(-${radius}px);">${char}</span>`
+    )
+    .join("");
+});
+
+// ======================================================================================
