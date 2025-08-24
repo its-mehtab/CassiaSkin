@@ -63,7 +63,7 @@ header {
   border-bottom: 1px solid #0000001a;
 
   nav.navbar {
-    padding: 23px 0;
+    padding: 15px 0;
 
     .nav-link {
       margin-left: 20px;
@@ -94,6 +94,12 @@ header {
 
 img {
   width: 100%;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: 0;
 }
 
 h1,
@@ -355,8 +361,9 @@ h1,
   .about-face-img {
     width: 150px;
     position: absolute;
-    bottom: 40px;
+    bottom: 80px;
     right: 80px;
+    animation: leftDown 6s linear infinite;
   }
 }
 
@@ -718,8 +725,29 @@ h1,
   }
 
   .why-us-img1 {
-    border-radius: 20px;
-    overflow: hidden;
+    position: relative;
+
+    img {
+      border-radius: 20px;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      gap: 12px;
+      position: absolute;
+      left: -54px;
+      bottom: 112px;
+      background: #ffffff;
+      box-shadow: 0px 0px 30px rgba(10, 51, 102, 0.1);
+      border-radius: 15px 15px 0px 15px;
+
+      p {
+        font-size: 14px;
+        color: $primary-color;
+      }
+    }
   }
 
   .why-us-img2 {
@@ -1005,5 +1033,11 @@ footer {
   .footer-copyright {
     text-align: center;
     padding: 25px 0;
+  }
+}
+
+@media (min-width: 767px) {
+  .modal-dialog {
+    max-width: 720px;
   }
 }

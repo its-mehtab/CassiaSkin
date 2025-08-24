@@ -190,12 +190,17 @@
                 />
               </svg>
               <div class="banner-play-btn">
-                <a href="#" class="play-btn">
+                <button
+                  type="button"
+                  class="play-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#videoModal"
+                >
                   <i class="fa-solid fa-play"></i>
                   <div class="text">
                     <p>Explore More collection&nbsp;</p>
                   </div>
-                </a>
+                </button>
               </div>
               <img src="images/banner-img.png" alt="" />
             </div>
@@ -215,12 +220,17 @@
           <div class="col-md-5">
             <div class="about-left">
               <div class="play-btn-wrap">
-                <a href="#" class="play-btn">
+                <button
+                  type="button"
+                  class="play-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#videoModal"
+                >
                   <i class="fa-solid fa-play"></i>
                   <div class="text">
                     <p>Explore More collection&nbsp;</p>
                   </div>
-                </a>
+                </button>
               </div>
               <img src="images/about-img.png" alt="" />
             </div>
@@ -2580,6 +2590,35 @@
               <div class="row">
                 <div class="col-6">
                   <div class="why-us-img1">
+                    <span class="box">
+                      <svg
+                        width="45"
+                        height="45"
+                        viewBox="0 0 45 45"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M38.1232 14.1606L27.5337 21.7245L38.1232 29.2885V14.1606Z"
+                          stroke="#F46700"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M24.5081 11.1353H7.86738C6.1964 11.1353 4.8418 12.4899 4.8418 14.1609V29.2888C4.8418 30.9598 6.1964 32.3144 7.86738 32.3144H24.5081C26.1791 32.3144 27.5337 30.9598 27.5337 29.2888V14.1609C27.5337 12.4899 26.1791 11.1353 24.5081 11.1353Z"
+                          stroke="#F46700"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+
+                      <p>
+                        Video Call <br />
+                        Support
+                      </p>
+                    </span>
                     <img src="images/why-us-img1.jpg" alt="" />
                   </div>
                 </div>
@@ -3427,6 +3466,40 @@
       </div>
     </footer>
     <!-- End Footer Section -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="videoModal"
+      tabindex="-1"
+      aria-labelledby="videoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <iframe
+              width="100%"
+              height="420"
+              src="https://www.youtube.com/embed/zzni9tERtB4?si=Ovnk0ZQdNbVyB-1g"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

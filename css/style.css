@@ -57,7 +57,7 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1019607843);
 }
 header nav.navbar {
-  padding: 23px 0;
+  padding: 15px 0;
 }
 header nav.navbar .nav-link {
   margin-left: 20px;
@@ -85,6 +85,12 @@ img {
   width: 100%;
 }
 
+button {
+  background: none;
+  outline: none;
+  border: 0;
+}
+
 h1,
 .common-head {
   font-weight: 700;
@@ -108,8 +114,7 @@ h1,
 
 .play-btn {
   background-color: rgba(255, 255, 255, 0.7019607843);
-  -webkit-backdrop-filter: blur(8.5px);
-          backdrop-filter: blur(8.5px);
+  backdrop-filter: blur(8.5px);
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -318,8 +323,9 @@ h1,
 .about-sec .about-face-img {
   width: 150px;
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   right: 80px;
+  animation: leftDown 6s linear infinite;
 }
 
 .marquee-1 {
@@ -407,8 +413,7 @@ h1,
   top: 0;
   left: 0;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -2;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) h3 {
@@ -431,8 +436,7 @@ h1,
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box .skin-care-box-image img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box h3 {
   color: #0a3366;
@@ -605,8 +609,7 @@ h1,
 }
 
 .why-us-item ul {
-  -moz-column-count: 2;
-       column-count: 2;
+  column-count: 2;
   margin: 25px 0;
 }
 .why-us-item ul li {
@@ -626,8 +629,26 @@ h1,
   display: inline-block;
 }
 .why-us-item .why-us-img1 {
+  position: relative;
+}
+.why-us-item .why-us-img1 img {
   border-radius: 20px;
-  overflow: hidden;
+}
+.why-us-item .why-us-img1 .box {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 12px;
+  position: absolute;
+  left: -54px;
+  bottom: 112px;
+  background: #ffffff;
+  box-shadow: 0px 0px 30px rgba(10, 51, 102, 0.1);
+  border-radius: 15px 15px 0px 15px;
+}
+.why-us-item .why-us-img1 .box p {
+  font-size: 14px;
+  color: #0a3366;
 }
 .why-us-item .why-us-img2 {
   border-radius: 20px;
@@ -874,4 +895,10 @@ footer .get-in-touch .get-in-touch-item p {
 footer .footer-copyright {
   text-align: center;
   padding: 25px 0;
+}
+
+@media (min-width: 767px) {
+  .modal-dialog {
+    max-width: 720px;
+  }
 }/*# sourceMappingURL=style.css.map */
