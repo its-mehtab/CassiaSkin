@@ -369,31 +369,45 @@ h1,
 
 .marquee-1 {
   background-color: $primary-color;
+  overflow: hidden;
 
-  h4 {
-    padding: 20px 0;
+  .marquee-list {
     display: flex;
-    align-items: center;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 38px;
-    text-transform: capitalize;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+    min-width: 200%;
+    animation: ticker 15s linear infinite;
 
-    &::before {
-      content: "";
-      width: 20px;
-      min-width: 20px;
-      height: 20px;
-      display: inline-block;
-      background-image: url(../images/marqee-icon.svg);
-      background-size: contain;
-      background-position: center;
-      margin-right: 20px;
+    .marquee-item {
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 38px;
+      text-transform: capitalize;
+      color: #fff;
+
+      &::before {
+        content: "";
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+        display: inline-block;
+        background-image: url(../images/marqee-icon.svg);
+        background-size: contain;
+        background-position: center;
+        margin: 0 50px;
+      }
     }
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
