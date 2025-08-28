@@ -8,15 +8,6 @@ $(window).scroll(function () {
 });
 // Fixed navbar End
 
-// const navItem = document.querySelectorAll(".nav-link");
-
-// navItem.forEach((currNav) => {
-//   currNav.addEventListener("mouseover", function () {
-//     // console.log(currNav);
-//     currNav.classList.add("position-relative");
-//   });
-// });
-
 // ===============================================================================
 
 // Scroll Top navbar
@@ -30,46 +21,42 @@ $(window).scroll(function () {
 // Scroll Top End
 
 // ======================================================================================
-// $(".owl-carousel").owlCarousel({
+
+// new Swiper(".marquee", {
+//   slidesPerView: "auto",
+//   freeMode: true,
 //   loop: true,
-//   autoPlay: true,
-//   autoplayTimeout: 500,
-//   margin: 20,
-//   nav: false,
-//   dots: false,
-//   // smartSpeed: 250000,
-//   responsive: {
-//     0: {
-//       items: 1,
-//     },
-//     600: {
-//       items: 3,
-//     },
-//     1000: {
-//       items: 7,
-//     },
+//   speed: 6500,
+//   autoplay: {
+//     delay: 0,
+//     disableOnInteraction: false,
 //   },
 // });
 
-new Swiper(".marquee", {
-  slidesPerView: 7,
-  spaceBetween: 30,
-  // freeMode: true,
-  loop: true,
-  // autoplay: {
-  //   delay: 500,
-  //   disableOnInteraction: false,
-  // },
-});
-
 new Swiper(".skin-care-slider", {
-  slidesPerView: 5,
+  slidesPerView: 1,
   spaceBetween: 20,
+  breakpoints: {
+    1200: {
+      slidesPerView: 5,
+    },
+  },
 });
 
 new Swiper(".products-slider", {
-  slidesPerView: 4,
+  slidesPerView: 1,
   spaceBetween: 20,
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+    },
+    991: {
+      slidesPerView: 3,
+    },
+    1200: {
+      slidesPerView: 4,
+    },
+  },
 });
 
 const skinItemBtn = document.querySelectorAll(".skin-item");
@@ -89,12 +76,19 @@ skinItemBtn.forEach((currBtn) => {
   });
 });
 
+if (window.innerWidth < 1200) {
+  sliderItem.forEach((currSlider) => {
+    currSlider.classList.add("skin-care-active");
+  });
+}
+
 // ======================================================================================
 const texts = document.querySelectorAll(".play-btn .text");
+const radius = window.innerWidth > 400 ? 90 : 70;
+console.log(radius);
 
 texts.forEach((text) => {
   const chars = text.innerText.split("");
-  const radius = 90;
   const angleStep = 360 / chars.length;
 
   text.innerHTML = chars

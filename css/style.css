@@ -114,7 +114,8 @@ h1,
 
 .play-btn {
   background-color: rgba(255, 255, 255, 0.7019607843);
-  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+          backdrop-filter: blur(8.5px);
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -368,10 +369,6 @@ h1,
     transform: translateX(-50%);
   }
 }
-.skin-care-slider .swiper-slide {
-  flex: 0 0 100px;
-  transition: all 0.5s;
-}
 .skin-care-slider .swiper-slide h3 {
   font-size: 24px;
   font-weight: 700;
@@ -425,16 +422,13 @@ h1,
   top: 0;
   left: 0;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: -2;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) h3 {
   writing-mode: vertical-lr;
   transform: rotate(180deg);
-}
-.skin-care-slider .swiper-slide.skin-care-active {
-  width: calc(100% - 480px);
-  flex: 0 0 calc(100% - 480px);
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-item {
   display: none;
@@ -448,7 +442,8 @@ h1,
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box .skin-care-box-image img {
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box h3 {
   color: #0a3366;
@@ -621,7 +616,8 @@ h1,
 }
 
 .why-us-item ul {
-  column-count: 2;
+  -moz-column-count: 2;
+       column-count: 2;
   margin: 25px 0;
 }
 .why-us-item ul li {
@@ -912,5 +908,157 @@ footer .footer-copyright {
 @media (min-width: 767px) {
   .modal-dialog {
     max-width: 720px;
+  }
+}
+@media (min-width: 1900px) {
+  .banner-img {
+    right: 300px;
+  }
+}
+@media (max-width: 1900px) {
+  .skin-care-slider .swiper-slide .skin-care-box {
+    min-width: 640px;
+  }
+}
+@media (max-width: 1320px) {
+  .banner-img {
+    max-width: 550px;
+  }
+}
+@media (min-width: 1200px) {
+  .skin-care-slider .swiper-slide {
+    flex: 0 0 100px;
+    transition: all 0.5s;
+  }
+  .skin-care-slider .swiper-slide.skin-care-active {
+    width: calc(100% - 480px);
+    flex: 0 0 calc(100% - 480px);
+  }
+}
+@media (max-width: 1200px) {
+  .banner-sec {
+    padding: 80px 0;
+  }
+  .banner-img {
+    max-width: 400px;
+  }
+  .banner-content .face-img-1 {
+    top: -52px;
+    width: 80px;
+    height: 80px;
+  }
+  .banner-content .face-img-1::before {
+    width: 100px;
+    height: 100px;
+  }
+  .banner-content .face-img-1::after {
+    width: 120px;
+    height: 120px;
+  }
+  .skin-care-slider .swiper-slide .skin-care-box {
+    width: 100%;
+  }
+  .skin-care-slider .swiper-slide .skin-item {
+    display: none;
+  }
+  .skin-care-slider .swiper-slide .skin-care-box {
+    display: flex;
+    min-width: unset;
+  }
+  .about-sec .about-face-img {
+    bottom: 50px;
+    right: 20px;
+  }
+  .why-us-item .why-us-img2 .google-rating {
+    padding: 15px;
+    gap: 10px;
+  }
+  .why-us-item .why-us-img2 .google-rating .star-wrap {
+    gap: 0;
+  }
+  .why-us-item .why-us-img2 .google-rating img {
+    width: 40px;
+  }
+}
+@media (max-width: 991px) {
+  html {
+    font-size: 50%;
+  }
+  .navbar-toggler-icon {
+    width: 3em;
+    height: 3em;
+  }
+  header nav.navbar .nav-link {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .navbar-nav {
+    padding: 20px 0;
+  }
+  .banner-img {
+    position: relative;
+    right: unset;
+    max-width: 100%;
+    display: block;
+  }
+  .banner-img .banner-play-btn {
+    right: 60px;
+    bottom: 40px;
+  }
+  .faq-img {
+    position: relative;
+    right: unset;
+  }
+  .faq-sec {
+    padding-bottom: 0 !important;
+  }
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 45%;
+  }
+  .banner-content {
+    padding-left: 0;
+  }
+  .banner-content .face-img-1 {
+    display: none;
+  }
+  .skin-care-slider .swiper-slide .skin-care-box {
+    display: block;
+  }
+  .skin-care-slider .swiper-slide.skin-care-active .skin-care-box .skin-care-box-image {
+    width: 100%;
+    height: auto;
+    min-width: unset;
+    margin-bottom: 20px;
+  }
+  .about-right {
+    margin-top: 60px;
+  }
+  .sp-tb {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .sp-t {
+    padding-top: 60px;
+  }
+  .sp-b {
+    padding-bottom: 60px;
+  }
+}
+@media (max-width: 400px) {
+  .about-sec .about-face-img {
+    display: none;
+  }
+  .play-btn {
+    width: 150px;
+    height: 150px;
+  }
+  .play-btn .text {
+    font-size: 14px;
+  }
+  .why-us-item ul {
+    -moz-column-count: 1;
+         column-count: 1;
   }
 }/*# sourceMappingURL=style.css.map */
