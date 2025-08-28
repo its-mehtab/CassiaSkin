@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="css/fancybox.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -281,28 +282,16 @@
 
     <!-- Start Marqee Section -->
     <section class="marquee-1">
-      <!-- <div class="owl-carousel owl-theme">
-        <div class="item"><h4>Accessories</h4></div>
-        <div class="item"><h4>Haircare</h4></div>
-        <div class="item"><h4>Nailcare</h4></div>
-        <div class="item"><h4>Beautycare</h4></div>
-        <div class="item"><h4>Bodycare</h4></div>
-        <div class="item"><h4>Skincare</h4></div>
-        <div class="item"><h4>Accessories</h4></div>
-        <div class="item"><h4>Haircare</h4></div>
-      </div> -->
-      <div class="swiper marquee">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><h4>Accessories</h4></div>
-          <div class="swiper-slide"><h4>Haircare</h4></div>
-          <div class="swiper-slide"><h4>Nailcare</h4></div>
-          <div class="swiper-slide"><h4>Beautycare</h4></div>
-          <div class="swiper-slide"><h4>Bodycare</h4></div>
-          <div class="swiper-slide"><h4>Skincare</h4></div>
-          <div class="swiper-slide"><h4>Accessories</h4></div>
-          <div class="swiper-slide"><h4>Haircare</h4></div>
-        </div>
-      </div>
+      <ul class="marquee-list">
+        <li class="marquee-item wow bounceIn">Accessories</li>
+        <li class="marquee-item wow bounceIn">Haircare</li>
+        <li class="marquee-item wow bounceIn">Nailcare</li>
+        <li class="marquee-item wow bounceIn">Beautycare</li>
+        <li class="marquee-item wow bounceIn">Bodycare</li>
+        <li class="marquee-item wow bounceIn">Skincare</li>
+        <li class="marquee-item wow bounceIn">Accessories</li>
+        <li class="marquee-item wow bounceIn">Haircare</li>
+      </ul>
     </section>
     <!-- End Marqee Section -->
 
@@ -3506,12 +3495,16 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/fancybox.umd.js"></script>
+    <script src="js/WOW.js"></script>
     <script src="js/main.js"></script>
 
     <script>
       Fancybox.bind("[data-fancybox]", {
         // Your custom options
       });
+    </script>
+    <script>
+      new WOW().init();
     </script>
   </body>
 </html>

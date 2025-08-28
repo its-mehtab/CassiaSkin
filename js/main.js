@@ -108,3 +108,5 @@ texts.forEach((text) => {
 });
 
 // ======================================================================================
+const marqueeList = document.querySelector(".marquee-list");
+marqueeList.innerHTML += marqueeList.innerHTML;

@@ -330,21 +330,25 @@ h1,
 
 .marquee-1 {
   background-color: #0a3366;
+  overflow: hidden;
 }
-.marquee-1 h4 {
+.marquee-1 .marquee-list {
+  display: flex;
+  min-width: 200%;
+  animation: ticker 15s linear infinite;
+}
+.marquee-1 .marquee-list .marquee-item {
   padding: 20px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-weight: 300;
   font-size: 24px;
   line-height: 38px;
   text-transform: capitalize;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  color: #fff;
 }
-.marquee-1 h4::before {
+.marquee-1 .marquee-list .marquee-item::before {
   content: "";
   width: 20px;
   min-width: 20px;
@@ -353,9 +357,17 @@ h1,
   background-image: url(../images/marqee-icon.svg);
   background-size: contain;
   background-position: center;
-  margin-right: 20px;
+  margin: 0 50px;
 }
 
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 .skin-care-slider .swiper-slide {
   flex: 0 0 100px;
   transition: all 0.5s;
