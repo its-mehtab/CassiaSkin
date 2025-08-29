@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CassiaSkin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/fancybox.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="images/logo.svg" alt="CassiaSkin Logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="features.html">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+            </ul>
+            <ul class="header-icons d-flex">
+              <li>
+                <a href="wishlist.html">
+                  <svg
+                    width="37"
+                    height="37"
+                    viewBox="0 0 38 38"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32.5731 7.61188C28.7256 4.35813 22.8831 4.655 19 8.1225C15.1169 4.655 9.27438 4.35813 5.42688 7.61188C3.325 9.39313 2.09 12.1006 2.0425 15.0456C1.98313 18.1806 3.26563 21.185 5.54563 23.2513L14.7013 32.4187C15.8888 33.6062 17.4444 34.2 19 34.2C20.5556 34.2 22.1113 33.6062 23.2988 32.4187L32.4188 23.2869C34.7344 21.185 36.0169 18.1806 35.9575 15.0456C35.91 12.1006 34.675 9.39313 32.5731 7.61188ZM30.78 21.5769L21.6125 30.7444C20.1756 32.1812 17.8244 32.1812 16.3875 30.7444L7.18438 21.5413C5.37938 19.8906 4.37 17.5394 4.40563 15.0931C4.45313 12.825 5.39125 10.7588 6.97063 9.41688C8.30063 8.28875 9.99875 7.7425 11.7444 7.7425C14.06 7.7425 16.4469 8.71625 18.1094 10.5925C18.5606 11.0913 19.4394 11.0913 19.8906 10.5925C22.8119 7.315 27.9181 6.78063 31.0294 9.41688C32.6088 10.7588 33.5469 12.825 33.5944 15.0931C33.63 17.5394 32.6206 19.8906 30.78 21.5769Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M27.6882 9.56092C27.0667 9.3562 26.4016 9.68846 26.1916 10.3066C25.9812 10.9252 26.3133 11.5984 26.9304 11.8118C27.0434 11.8507 29.6875 12.797 29.6875 15.4375C29.6875 16.0932 30.2193 16.625 30.875 16.625C31.5307 16.625 32.0625 16.0932 32.0625 15.4375C32.0625 11.0696 27.8668 9.62065 27.6882 9.56092Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="cart.html">
+                  <svg
+                    width="40"
+                    height="32"
+                    viewBox="0 0 40 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.6562 32C13.5312 31.9792 12.5938 31.5885 11.8438 30.8281C11.0938 30.0677 10.6979 29.125 10.6562 28C10.6979 26.875 11.0938 25.9323 11.8438 25.1719C12.5938 24.4115 13.5312 24.0208 14.6562 24C15.8021 24.0208 16.75 24.4115 17.5 25.1719C18.25 25.9323 18.6354 26.875 18.6562 28C18.6354 29.125 18.25 30.0677 17.5 30.8281C16.75 31.5885 15.8021 31.9792 14.6562 32ZM14.6562 29.3438C15.0312 29.3229 15.349 29.1875 15.6094 28.9375C15.8698 28.6875 16 28.375 16 28C16 27.625 15.8698 27.3125 15.6094 27.0625C15.349 26.8125 15.0312 26.6875 14.6562 26.6875C14.2812 26.6875 13.9688 26.8125 13.7188 27.0625C13.4688 27.3125 13.3438 27.625 13.3438 28C13.3438 28.375 13.4688 28.6875 13.7188 28.9375C13.9688 29.1875 14.2812 29.3229 14.6562 29.3438ZM30.6562 32C29.5312 31.9792 28.5938 31.5885 27.8438 30.8281C27.0938 30.0677 26.6979 29.125 26.6562 28C26.6979 26.875 27.0938 25.9323 27.8438 25.1719C28.5938 24.4115 29.5312 24.0208 30.6562 24C31.8021 24.0208 32.75 24.4115 33.5 25.1719C34.25 25.9323 34.6354 26.875 34.6562 28C34.6354 29.125 34.25 30.0677 33.5 30.8281C32.75 31.5885 31.8021 31.9792 30.6562 32ZM30.6562 29.3438C31.0312 29.3229 31.349 29.1875 31.6094 28.9375C31.8698 28.6875 32 28.375 32 28C32 27.625 31.8698 27.3125 31.6094 27.0625C31.349 26.8125 31.0312 26.6875 30.6562 26.6875C30.2812 26.6875 29.9688 26.8125 29.7188 27.0625C29.4688 27.3125 29.3438 27.625 29.3438 28C29.3438 28.375 29.4688 28.6875 29.7188 28.9375C29.9688 29.1875 30.2812 29.3229 30.6562 29.3438ZM12.7188 6.65625H34.6562C35.0729 6.67708 35.4167 6.84896 35.6875 7.17188C35.9583 7.49479 36.0521 7.85417 35.9688 8.25L33.7188 19.4375C33.5104 20.4167 33.0469 21.1979 32.3281 21.7812C31.6094 22.3646 30.75 22.6562 29.75 22.6562H15.6875C14.6458 22.6562 13.7552 22.3333 13.0156 21.6875C12.276 21.0417 11.8333 20.2083 11.6875 19.1875L9.65625 3.8125C9.59375 3.47917 9.44271 3.20833 9.20312 3C8.96354 2.79167 8.67708 2.67708 8.34375 2.65625H5.34375C5.09375 2.65625 4.86979 2.59896 4.67188 2.48438C4.47396 2.36979 4.3125 2.20833 4.1875 2C4.0625 1.79167 4 1.56771 4 1.32812C4 1.08854 4.0625 0.864584 4.1875 0.65625C4.3125 0.447916 4.47396 0.286459 4.67188 0.171875C4.86979 0.057291 5.09375 0 5.34375 0H8.34375C9.36458 0.020834 10.2396 0.354166 10.9688 1C11.6979 1.64583 12.1354 2.46875 12.2812 3.46875L12.7188 6.65625ZM14.3125 18.8438C14.375 19.1771 14.5312 19.4531 14.7812 19.6719C15.0312 19.8906 15.3229 20 15.6562 20H29.7812C30.1146 20 30.401 19.901 30.6406 19.7031C30.8802 19.5052 31.0417 19.25 31.125 18.9375L33.0312 9.34375H13.0625L14.3125 18.8438Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Start Banner Section -->
+    <section class="banner-sec inner-banner">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="banner-content text-center">
+              <div class="face-img-1">
+                <img src="images/face-img1.png" alt="face-img" />
+              </div>
+              <h1>Terms & Conditions</h1>
+              <ul class="breadcrumb">
+                <li>
+                  <a href="index.html" class="">Home</a>
+                </li>
+                <li>Terms & Conditions</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <svg
+              width="60"
+              height="61"
+              viewBox="0 0 60 61"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30 0.5L33.8608 26.6392L60 30.5L33.8608 34.3608L30 60.5L26.1392 34.3608L0 30.5L26.1392 26.6392L30 0.5Z"
+                fill="#F46700"
+              />
+            </svg>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 60 61"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30 0.5L33.8608 26.6392L60 30.5L33.8608 34.3608L30 60.5L26.1392 34.3608L0 30.5L26.1392 26.6392L30 0.5Z"
+                fill="#F46700"
+              />
+            </svg>
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 60 61"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30 0.5L33.8608 26.6392L60 30.5L33.8608 34.3608L30 60.5L26.1392 34.3608L0 30.5L26.1392 26.6392L30 0.5Z"
+                fill="#F46700"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Banner Section -->
+
+    <!-- Start Contact Section -->
+    <section class="terms-sec sp-tb bg-1">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="terms-content">
+              <h3 class="common-head">1. General Information</h3>
+              <p>
+                This website is owned and operated by CassiaSkin. All references
+                to “we,” “our,” and “us” refer to CassiaSkin, and “you” refers
+                to the customer or user of our site.
+              </p>
+
+              <h3 class="common-head mt-5">2. Eligibility</h3>
+              <p>
+                By using our site, you confirm that: <br />
+                You are at least 18 years old or have parental consent. <br />
+                You will use this site only for lawful purposes.
+              </p>
+
+              <h3 class="common-head mt-5">3. Products & Descriptions</h3>
+              <p>
+                We strive to provide accurate descriptions and images of our
+                products. However, slight variations may occur. Our skincare
+                products are for external use only. Always perform a patch test
+                before use. We do not claim to cure, treat, or diagnose any
+                medical condition. Individual results may vary.
+              </p>
+
+              <h3 class="common-head mt-5">4. Orders & Payments</h3>
+              <p>
+                All prices are displayed in [Currency] and include applicable
+                taxes unless stated otherwise. We accept [List payment methods:
+                Credit/Debit cards, UPI, Net Banking, etc.]. Orders are subject
+                to acceptance and availability.
+              </p>
+
+              <h3 class="common-head mt-5">5. Shipping & Delivery</h3>
+              <p>
+                All prices are displayed in [Currency] and include applicable
+                taxes unless stated otherwise. We accept [List payment methods:
+                Credit/Debit cards, UPI, Net Banking, etc.]. Orders are subject
+                to acceptance and availability.
+              </p>
+
+              <h3 class="common-head mt-5">6. General Information</h3>
+              <p>
+                This website is owned and operated by CassiaSkin. All references
+                to “we,” “our,” and “us” refer to CassiaSkin, and “you” refers
+                to the customer or user of our site.
+              </p>
+
+              <h3 class="common-head mt-5">7. Returns & Refunds</h3>
+              <p>
+                Returns are accepted only for unused and unopened products
+                within [X] days of delivery. Refunds will be processed as per
+                our [Refund Policy]. For hygiene reasons, certain items may not
+                be eligible for return.
+              </p>
+
+              <h3 class="common-head mt-5">8. User Responsibilities</h3>
+              <p>
+                Do not misuse our site for fraudulent or unlawful activities. Do
+                not attempt to breach our security systems or gain unauthorized
+                access.
+              </p>
+
+              <h3 class="common-head mt-5">9. Intellectual Property</h3>
+              <p>
+                All content on this site, including text, images, and
+                trademarks, is owned by CassiaSkin and protected under
+                applicable laws. Unauthorized use is prohibited.
+              </p>
+
+              <h3 class="common-head mt-5">10. Limitation of Liability</h3>
+              <p>
+                We are not liable for any direct, indirect, or consequential
+                damages arising from the use of our products or site. Always
+                consult a healthcare professional for concerns related to skin
+                conditions.
+              </p>
+
+              <h3 class="common-head mt-5">11. Privacy</h3>
+              <p>
+                Your privacy is important to us. Please review our Privacy
+                Policy to understand how we collect and use your information.
+              </p>
+
+              <h3 class="common-head mt-5">12. Changes to Terms</h3>
+              <p>
+                We may update these Terms at any time. Please review them
+                periodically for changes.
+              </p>
+
+              <h3 class="common-head mt-5">13. Contact Us</h3>
+              <p>
+                If you have questions about these Terms, contact us at: <br />
+                Email: casiaskin@gmail.com <br />
+                Phone: +1 123 456 7890
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+
+    <!-- Start Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-4">
+            <div class="footer-top-item">
+              <a href="index.html" class="footer-logo">
+                <img src="images/logo-white.svg" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-8">
+            <div class="footer-top-item mt-5 mt-md-0">
+              <div class="d-flex flex-wrap justify-content-md-end gap-3">
+                <a
+                  href="shop.html"
+                  class="button primary-btn outline-btn-white"
+                >
+                  Shop Now
+                  <span class="icon">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.0156 3.97949C10.8648 3.84025 10.6939 3.77051 10.5029 3.77051C10.3121 3.77051 10.1411 3.84231 9.99023 3.9873C9.8395 4.13224 9.76465 4.30333 9.76465 4.5C9.76465 4.69691 9.83444 4.87069 9.97363 5.02148L9.97266 5.02246L13.1865 8.23535H14.9941C15.145 8.24373 15.2791 8.28657 15.3975 8.36035L11.0156 3.97949ZM3.00586 9.74707H13.1807L13.9277 9L13.1807 8.25293H3.00586C2.7972 8.26462 2.62035 8.33959 2.47559 8.47852C2.3309 8.61741 2.25879 8.79135 2.25879 9C2.25879 9.20865 2.3309 9.38259 2.47559 9.52148C2.58419 9.62571 2.71096 9.69394 2.85547 9.72656L3.00586 9.74707ZM14.9941 9.74707C15.1831 9.73648 15.3439 9.67159 15.4805 9.55664L15.5156 9.52148C15.6665 9.37064 15.7412 9.19669 15.7412 9C15.7412 8.80331 15.6665 8.62936 15.5156 8.47852L15.4805 8.44434C15.3438 8.32913 15.1833 8.26353 14.9941 8.25293H13.2041L13.9453 8.99414L13.9395 9L13.9453 9.00586L13.2041 9.74707H14.9941ZM10.5029 14.2295C10.6939 14.2295 10.8648 14.1598 11.0156 14.0205V14.0215L15.3975 9.63965C15.2791 9.71343 15.145 9.75627 14.9941 9.76465H13.1865L9.97363 12.9785C9.83444 13.1293 9.76465 13.3031 9.76465 13.5C9.76465 13.6967 9.8395 13.8678 9.99023 14.0127C10.1411 14.1577 10.3121 14.2295 10.5029 14.2295Z"
+                        fill="#0A3366"
+                        stroke="#0A3366"
+                        stroke-width="0.0175781"
+                      ></path>
+                    </svg>
+                  </span>
+                </a>
+                <a href="contact.html" class="button secondary-btn">
+                  Contact Us
+                  <span class="icon">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.0156 3.97949C10.8648 3.84025 10.6939 3.77051 10.5029 3.77051C10.3121 3.77051 10.1411 3.84231 9.99023 3.9873C9.8395 4.13224 9.76465 4.30333 9.76465 4.5C9.76465 4.69691 9.83444 4.87069 9.97363 5.02148L9.97266 5.02246L13.1865 8.23535H14.9941C15.145 8.24373 15.2791 8.28657 15.3975 8.36035L11.0156 3.97949ZM3.00586 9.74707H13.1807L13.9277 9L13.1807 8.25293H3.00586C2.7972 8.26462 2.62035 8.33959 2.47559 8.47852C2.3309 8.61741 2.25879 8.79135 2.25879 9C2.25879 9.20865 2.3309 9.38259 2.47559 9.52148C2.58419 9.62571 2.71096 9.69394 2.85547 9.72656L3.00586 9.74707ZM14.9941 9.74707C15.1831 9.73648 15.3439 9.67159 15.4805 9.55664L15.5156 9.52148C15.6665 9.37064 15.7412 9.19669 15.7412 9C15.7412 8.80331 15.6665 8.62936 15.5156 8.47852L15.4805 8.44434C15.3438 8.32913 15.1833 8.26353 14.9941 8.25293H13.2041L13.9453 8.99414L13.9395 9L13.9453 9.00586L13.2041 9.74707H14.9941ZM10.5029 14.2295C10.6939 14.2295 10.8648 14.1598 11.0156 14.0205V14.0215L15.3975 9.63965C15.2791 9.71343 15.145 9.75627 14.9941 9.76465H13.1865L9.97363 12.9785C9.83444 13.1293 9.76465 13.3031 9.76465 13.5C9.76465 13.6967 9.8395 13.8678 9.99023 14.0127C10.1411 14.1577 10.3121 14.2295 10.5029 14.2295Z"
+                        fill="#0A3366"
+                        stroke="#0A3366"
+                        stroke-width="0.0175781"
+                      ></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-mid">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="footer-mid-item">
+                <p>
+                  At Eventify, we bring live entertainment to life—book your
+                  tickets now and join the excitement.
+                </p>
+                <h4>Important Updates Waiting for you</h4>
+                <div class="subscription">
+                  <input type="email" placeholder="Your Email Address" />
+                  <button class="submit-icon">
+                    <svg
+                      width="19"
+                      height="19"
+                      viewBox="0 0 19 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1.29332 3.34013C1.25332 3.10013 1.27332 2.85013 1.35332 2.59013C1.43332 2.33013 1.58332 2.11013 1.80332 1.93013C2.02332 1.75013 2.26332 1.65013 2.52332 1.63013C2.78332 1.61013 3.03332 1.66013 3.27332 1.78013L16.6533 8.44013C16.8533 8.56013 17.0233 8.73013 17.1633 8.95013C17.3033 9.17013 17.3733 9.42013 17.3733 9.70013C17.3733 9.98013 17.3033 10.2301 17.1633 10.4501C17.0233 10.6701 16.8533 10.8401 16.6533 10.9601L3.27332 17.6201C3.03332 17.7401 2.78332 17.7901 2.52332 17.7701C2.26332 17.7501 2.02332 17.6501 1.80332 17.4701C1.58332 17.2901 1.43332 17.0701 1.35332 16.8101C1.27332 16.5501 1.25332 16.3001 1.29332 16.0601L2.73332 10.4201L10.8333 9.70013L2.73332 8.92013L1.29332 3.34013Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="footer-mid-item text-md-center">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li>
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                    <a href="about.html">About US</a>
+                  </li>
+                  <li>
+                    <a href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="privacy.html">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="terms.html">Terms Of Condition</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="footer-mid-item text-md-center">
+                <h3>Shop now</h3>
+                <ul>
+                  <li>
+                    <a href="shop.html">Shop</a>
+                  </li>
+                  <li>
+                    <a href="cart.html">Cart</a>
+                  </li>
+                  <li>
+                    <a href="wishlist.html">Wishlist</a>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="get-in-touch">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="get-in-touch-item">
+                <div>
+                  <h5>Get in Touch with us</h5>
+                  <p>Lorem Ipsum is simply dummy</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <a href="tel:+11234567890" class="get-in-touch-item">
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 17.1688C21 16.9032 20.9219 16.6766 20.7656 16.4891C20.6094 16.3016 20.3985 16.1844 20.1328 16.1376C19.086 15.9969 18.0703 15.7391 17.086 15.3641C16.8985 15.3016 16.711 15.2899 16.5235 15.329C16.336 15.368 16.1719 15.4579 16.0313 15.5985L14.7656 16.8641C14.5938 17.0204 14.3985 17.1141 14.1797 17.1454C13.961 17.1766 13.75 17.1376 13.5469 17.0282C12.2031 16.2626 10.9922 15.3407 9.91408 14.2626C8.83596 13.1844 7.91408 11.9735 7.14846 10.6297C7.03908 10.4266 6.99611 10.2157 7.01955 9.99693C7.04299 9.77818 7.14064 9.59068 7.31252 9.43443L8.57814 8.1688C8.71877 8.01255 8.80861 7.84068 8.84767 7.65318C8.88674 7.46568 8.87502 7.27818 8.81252 7.09068C8.43752 6.1063 8.17971 5.09849 8.03908 4.06724C8.00783 3.81724 7.89846 3.61021 7.71096 3.44615C7.52346 3.28209 7.29689 3.20005 7.03127 3.20005H4.00783C3.72658 3.21568 3.4883 3.32896 3.29299 3.5399C3.09767 3.75084 3.00783 3.99693 3.02346 4.27818C3.17971 5.76255 3.50392 7.20005 3.99611 8.59068C4.4883 9.9813 5.14064 11.3016 5.95314 12.5516C6.68752 13.7079 7.53517 14.7665 8.49611 15.7274C9.45705 16.6883 10.5156 17.536 11.6719 18.2704C12.9219 19.0672 14.2383 19.7118 15.6211 20.204C17.0039 20.6961 18.4297 21.0282 19.8985 21.2001C20.1953 21.2157 20.4492 21.1219 20.6602 20.9188C20.8711 20.7157 20.9844 20.4735 21 20.1922V17.1688ZM22.9922 20.1688C22.9922 20.6063 22.9102 21.0165 22.7461 21.3993C22.5821 21.7821 22.3399 22.118 22.0196 22.4071C21.6992 22.6961 21.3399 22.9071 20.9414 23.0399C20.543 23.1727 20.125 23.2235 19.6875 23.1922C18.0625 23.0047 16.4844 22.6415 14.9531 22.1024C13.4219 21.5633 11.9688 20.8485 10.5938 19.9579C9.31252 19.1454 8.14064 18.2079 7.07814 17.1454C6.01564 16.0829 5.07814 14.911 4.26564 13.6297C3.35939 12.2547 2.63283 10.7938 2.08596 9.24693C1.53908 7.70005 1.1797 6.11412 1.00783 4.48912C0.97658 4.05162 1.02736 3.63755 1.16017 3.24693C1.29299 2.8563 1.50392 2.50084 1.79299 2.18052C2.08205 1.86021 2.41799 1.61802 2.8008 1.45396C3.18361 1.2899 3.58596 1.20787 4.00783 1.20787H7.03127C7.79689 1.20787 8.45705 1.45005 9.01174 1.93443C9.56642 2.4188 9.90627 3.0438 10.0313 3.80943C10.1563 4.70005 10.375 5.55943 10.6875 6.38755C10.8906 6.95005 10.9336 7.51255 10.8164 8.07505C10.6992 8.63755 10.4297 9.13755 10.0078 9.57505L9.28127 10.3016C9.87502 11.2235 10.5586 12.0711 11.332 12.8446C12.1055 13.618 12.961 14.3016 13.8985 14.8954L14.625 14.1688C15.0469 13.7626 15.5391 13.4969 16.1016 13.3719C16.6641 13.2469 17.2266 13.286 17.7891 13.4891C18.6328 13.8016 19.5078 14.0204 20.4141 14.1454C21.1797 14.2704 21.8008 14.6141 22.2774 15.1766C22.7539 15.7391 22.9922 16.411 22.9922 17.1922V20.1688Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div class="content">
+                  <h6>Call Us</h6>
+                  <p>+1 123 456 7890</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-3">
+              <a href="mailto:info@example.com" class="get-in-touch-item">
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.00781 3.2002H19.9922C20.8516 3.21582 21.5625 3.50879 22.125 4.0791C22.6875 4.64941 22.9766 5.35645 22.9922 6.2002V18.2002C22.9766 19.0439 22.6875 19.751 22.125 20.3213C21.5625 20.8916 20.8516 21.1846 19.9922 21.2002H4.00781C3.14844 21.1846 2.4375 20.8916 1.875 20.3213C1.3125 19.751 1.02344 19.0439 1.00781 18.2002V6.2002C1.02344 5.35645 1.3125 4.64941 1.875 4.0791C2.4375 3.50879 3.14844 3.21582 4.00781 3.2002ZM20.8828 5.75488C20.8047 5.58301 20.6875 5.4502 20.5312 5.35645C20.375 5.2627 20.1953 5.20801 19.9922 5.19238H4.00781C3.80469 5.20801 3.625 5.2627 3.46875 5.35645C3.3125 5.4502 3.19531 5.58301 3.11719 5.75488L12 11.9893L20.8828 5.75488ZM21 8.12207L12.5625 14.0283C12.3906 14.1377 12.2031 14.1924 12 14.1924C11.7969 14.1924 11.6094 14.1377 11.4375 14.0283L3 8.12207V18.2002C3 18.4814 3.09766 18.7158 3.29297 18.9033C3.48828 19.0908 3.72656 19.1924 4.00781 19.208H19.9922C20.2734 19.1924 20.5117 19.0908 20.707 18.9033C20.9023 18.7158 21 18.4814 21 18.2002V8.12207Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div class="content">
+                  <h6>Send us a Mail</h6>
+                  <p>info@example.com</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-3">
+              <div class="get-in-touch-item">
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 23.1924C8.89062 23.1143 6.30078 22.04 4.23047 19.9697C2.16016 17.8994 1.08594 15.3096 1.00781 12.2002C1.08594 9.09082 2.16016 6.50098 4.23047 4.43066C6.30078 2.36035 8.89062 1.28613 12 1.20801C15.1094 1.28613 17.6992 2.36035 19.7695 4.43066C21.8398 6.50098 22.9141 9.09082 22.9922 12.2002C22.9141 15.3096 21.8398 17.8994 19.7695 19.9697C17.6992 22.04 15.1094 23.1143 12 23.1924ZM12 21.2002C14.5469 21.1377 16.668 20.2588 18.3633 18.5635C20.0586 16.8682 20.9375 14.7471 21 12.2002C20.9375 9.65332 20.0586 7.53223 18.3633 5.83691C16.668 4.1416 14.5469 3.2627 12 3.2002C9.45312 3.2627 7.33203 4.1416 5.63672 5.83691C3.94141 7.53223 3.0625 9.65332 3 12.2002C3.0625 14.7471 3.94141 16.8682 5.63672 18.5635C7.33203 20.2588 9.45312 21.1377 12 21.2002ZM13.0078 6.2002C12.9922 5.91895 12.8906 5.68457 12.7031 5.49707C12.5156 5.30957 12.2812 5.21582 12 5.21582C11.7188 5.21582 11.4844 5.30957 11.2969 5.49707C11.1094 5.68457 11.0078 5.91895 10.9922 6.2002V12.2002C11.0078 12.4814 11.1094 12.7158 11.2969 12.9033L14.2969 15.9033C14.5 16.0908 14.7344 16.1846 15 16.1846C15.2656 16.1846 15.4961 16.0869 15.6914 15.8916C15.8867 15.6963 15.9844 15.4658 15.9844 15.2002C15.9844 14.9346 15.8906 14.7002 15.7031 14.4971L13.0078 11.7783V6.2002Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <div class="content">
+                  <h6>Opening Time</h6>
+                  <p>Mon -Sat: 7:00 - 17:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <p>
+            © 2025 <a href="index.html" class="text-white">Cassia</a>. All
+            Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer Section -->
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/fancybox.umd.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      Fancybox.bind("[data-fancybox]", {
+        // Your custom options
+      });
+    </script>
+  </body>
+</html>
