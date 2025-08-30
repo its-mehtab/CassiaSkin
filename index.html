@@ -595,7 +595,7 @@
           </ul>
           <div class="tab-content" id="tab-content">
             <div
-              class="tab-pane active"
+              class="tab-pane products-tab active"
               id="products-tabpanel-0"
               role="tabpanel"
               aria-labelledby="products-tab-0"
@@ -1066,7 +1066,7 @@
               </div>
             </div>
             <div
-              class="tab-pane"
+              class="tab-pane products-tab"
               id="products-tabpanel-1"
               role="tabpanel"
               aria-labelledby="products-tab-1"
@@ -1261,7 +1261,7 @@
               </div>
             </div>
             <div
-              class="tab-pane"
+              class="tab-pane products-tab"
               id="products-tabpanel-2"
               role="tabpanel"
               aria-labelledby="products-tab-2"
@@ -1548,7 +1548,7 @@
               </div>
             </div>
             <div
-              class="tab-pane"
+              class="tab-pane products-tab"
               id="products-tabpanel-3"
               role="tabpanel"
               aria-labelledby="products-tab-3"
@@ -3620,7 +3620,7 @@
     </footer>
     <!-- End Footer Section -->
 
-    <!-- Modal -->
+    <!-- Video Modal -->
     <div
       class="modal fade"
       id="videoModal"
@@ -3628,7 +3628,7 @@
       aria-labelledby="videoModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button
@@ -3862,6 +3862,88 @@
               class="button secondary-btn px-5 py-4 rounded-5"
               >Checkout</a
             >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Modal  -->
+    <div
+      class="modal fade"
+      id="productDetailsModal"
+      tabindex="-1"
+      aria-labelledby="productDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-1">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section class="product-details-sec pb-5 pt-3">
+              <div class="container">
+                <div class="row gx-lg-5">
+                  <div class="col-lg-6">
+                    <div class="product-img rounded-5 overflow-hidden">
+                      <img src="images/product-1.jpg" alt="product-img" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="product-details-content mt-5 mt-lg-0">
+                      <div class="offer-text position-static d-inline-block">
+                        Get 20% Off
+                      </div>
+                      <h2>Green Beauty</h2>
+                      <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book.
+                      </p>
+                      <div class="price">
+                        <span class="offered-price">$89.00</span>
+                        <del class="original-price">$119.00</del>
+                      </div>
+                      <div class="quantity-wrap">
+                        <button class="decrement-btn">
+                          <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <input
+                          type="text"
+                          id="quantity"
+                          value="1"
+                          min="1"
+                          readonly
+                        />
+                        <button class="increment-btn">
+                          <i class="fa-solid fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="btn-wrap d-flex flex-wrap gap-4">
+                        <a href="" class="button primary-btn">Add to Cart</a>
+                        <a href="" class="button secondary-btn"
+                          >Add to Wishlist</a
+                        >
+                      </div>
+                      <ul class="product-meta">
+                        <li><span>SKU:</span> 123456</li>
+                        <li><span>Category:</span> Skincare</li>
+                        <li>
+                          <span>Tags:</span> Organic, Natural, Eco-friendly
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>

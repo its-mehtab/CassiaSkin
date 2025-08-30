@@ -605,7 +605,7 @@ h1,
 
 .products-wrap {
   .nav-tabs {
-    margin: 40px 0;
+    margin: 20px 0;
     border: 0;
     gap: 15px;
 
@@ -644,6 +644,7 @@ h1,
   background-color: #fff;
   border-radius: 15px;
   overflow: hidden;
+  width: 100%;
 
   &:hover {
     .product-icons {
@@ -654,6 +655,11 @@ h1,
   .product-img {
     position: relative;
     overflow: hidden;
+
+    img {
+      top: 0;
+      transition: all ease-in-out 0.3s;
+    }
   }
 
   .product-content {
@@ -673,7 +679,7 @@ h1,
 }
 
 .price {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 25px;
   text-decoration: none;
   margin-top: 5px;
@@ -729,6 +735,12 @@ h1,
       align-items: center;
       justify-content: center;
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .wishlist-btn.active {
+      svg {
+        fill: #fff;
+      }
     }
 
     &:first-child {
@@ -1105,6 +1117,12 @@ footer {
   }
 }
 
+.swiper-slide {
+  .product-item {
+    min-height: 450px;
+  }
+}
+
 .product-item {
   margin-top: 30px;
 }
@@ -1387,20 +1405,9 @@ form {
   }
 }
 
-@media (min-width: 767px) {
-  .modal-dialog {
-    max-width: 720px;
-  }
-}
-
 @media (min-width: 1900px) {
   .banner-img {
     right: 300px;
-  }
-}
-@media (max-width: 1900px) {
-  .skin-care-slider .swiper-slide .skin-care-box {
-    min-width: 640px;
   }
 }
 @media (max-width: 1320px) {

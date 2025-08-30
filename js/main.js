@@ -1,3 +1,5 @@
+"use strict";
+
 // Fixed navbar
 $(window).scroll(function () {
   if ($(this).scrollTop() > 200) {
@@ -59,6 +61,19 @@ new Swiper(".products-slider", {
   },
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const wishlistBtn = document.querySelectorAll(".wishlist-btn");
+
+  wishlistBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      console.log("clicked", btn);
+
+      e.preventDefault();
+      btn.classList.toggle("active");
+    });
+  });
+});
+
 const skinItemBtn = document.querySelectorAll(".skin-item");
 const sliderItem = document.querySelectorAll(".skin-care-slider .swiper-slide");
 
@@ -85,7 +100,6 @@ if (window.innerWidth < 1200) {
 // ======================================================================================
 const texts = document.querySelectorAll(".play-btn .text");
 const radius = window.innerWidth > 400 ? 90 : 70;
-console.log(radius);
 
 texts.forEach((text) => {
   const chars = text.innerText.split("");
@@ -658,110 +672,164 @@ const products = [
   },
 ];
 
-const offerProductWrap = document.querySelectorAll(
-  ".offer-products-sec .row .col-lg-3"
+const offerProductsContainer = document.querySelector(
+  ".offer-products-sec .row"
+);
+const swiperContainer = document.querySelectorAll(
+  ".products-tab .swiper-wrapper"
+);
+const swiperContainer1 = document.querySelector(
+  "#products-tabpanel-0 .swiper-wrapper"
+);
+const swiperContainer2 = document.querySelector(
+  "#products-tabpanel-1 .swiper-wrapper"
+);
+const swiperContainer3 = document.querySelector(
+  "#products-tabpanel-2 .swiper-wrapper"
+);
+const swiperContainer4 = document.querySelector(
+  "#products-tabpanel-3 .swiper-wrapper"
 );
 
+const skinFaceProducts = products.filter((product) => {
+  return product.category === "Skin & Face";
+});
+const moisturizerProducts = products.filter((product) => {
+  return product.category === "Moisturizers & Creams";
+});
+const serumProducts = products.filter((product) => {
+  return product.category === "Serums";
+});
 const offerProducts = products.filter((product) => {
   return product.price.is_offer_active;
 });
-console.log(offerProducts.slice(0, 4));
 
-offerProductWrap.forEach((currProduct) => {
-  offerProducts.slice(0, 4).forEach((product) => {
-    currProduct.innerHTML = `<div class="product-item">
-                <div class="product-img">
-                  <span class="offer-text">${product.offers.description}</span>
-                  <ul class="product-icons">
-                    <li>
-                      <a href="#">Quick View</a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 48 48"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M41.68 9.21999C40.6585 8.198 39.4456
-                                  7.38728 38.1107 6.83416C36.7758 6.28103 35.345
-                                  5.99634 33.9 5.99634C32.455 5.99634 31.0242
-                                  6.28103 29.6893 6.83416C28.3544 7.38728 27.1415
-                                  8.198 26.12 9.21999L24 11.34L21.88
-                                  9.21999C19.8166 7.15661 17.0181 5.99741 14.1
-                                  5.99741C11.1819 5.99741 8.38338 7.15661 6.31999
-                                  9.21999C4.25661 11.2834 3.09741 14.0819 3.09741
-                                  17C3.09741 19.9181 4.25661 22.7166 6.31999
-                                  24.78L24 42.46L41.68 24.78C42.702 23.7585
-                                  43.5127 22.5456 44.0658 21.2107C44.6189 19.8758
-                                  44.9036 18.445 44.9036 17C44.9036 15.555 44.6189
-                                  14.1242 44.0658 12.7893C43.5127 11.4544 42.702
-                                  10.2415 41.68 9.21999Z"
-                            stroke="currentColor"
-                            stroke-width="4"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="none"
+offerProductsContainer && (offerProductsContainer.innerHTML = "");
+swiperContainer?.forEach((currContainer) => {
+  currContainer.innerHTML = "";
+});
+
+const insertProducts = (productsArry, wrapperClass, insertInto) => {
+  productsArry.forEach((product) => {
+    const productMainWrap = document.createElement("div");
+    productMainWrap.className = wrapperClass;
+
+    const ProductHTML = `<div class="product-item" data-id="${product.id}">
+              <div class="product-img">
+                ${
+                  product.price.is_offer_active
+                    ? `<span class="offer-text">${product.offers.description}</span>`
+                    : ""
+                }
+                <ul class="product-icons">
+                  <li>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal">Quick View</a>
+                  </li>
+                  <li>
+                    <a href="#" class="wishlist-btn">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M41.68 9.21999C40.6585 8.198 39.4456
+                                7.38728 38.1107 6.83416C36.7758 6.28103 35.345
+                                5.99634 33.9 5.99634C32.455 5.99634 31.0242
+                                6.28103 29.6893 6.83416C28.3544 7.38728 27.1415
+                                8.198 26.12 9.21999L24 11.34L21.88
+                                9.21999C19.8166 7.15661 17.0181 5.99741 14.1
+                                5.99741C11.1819 5.99741 8.38338 7.15661 6.31999
+                                9.21999C4.25661 11.2834 3.09741 14.0819 3.09741
+                                17C3.09741 19.9181 4.25661 22.7166 6.31999
+                                24.78L24 42.46L41.68 24.78C42.702 23.7585
+                                43.5127 22.5456 44.0658 21.2107C44.6189 19.8758
+                                44.9036 18.445 44.9036 17C44.9036 15.555 44.6189
+                                14.1242 44.0658 12.7893C43.5127 11.4544 42.702
+                                10.2415 41.68 9.21999Z"
                           stroke="currentColor"
-                          stroke-width="2"
+                          stroke-width="4"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="feather feather-shopping-cart"
-                        >
-                          <circle cx="9" cy="21" r="1"></circle>
-                          <circle cx="20" cy="21" r="1"></circle>
-                          <path
-                            d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-                          ></path>
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                  <img src="images/product-1.jpg" alt="" />
-                </div>
-                <div class="product-content">
-                  <div class="product-content-left">
-                    <a href="product.html?id=${product.id}">
-                      <h3>${product.name}</h3>
+                        />
+                      </svg>
                     </a>
-                    <div class="price">
-                      <span class="offered-price">$${product.price.offer.toFixed(
-                        2
-                      )}</span>
-                      <del class="original-price">${product.price.original.toFixed(
-                        2
-                      )}</del>
-                    </div>
-                  </div>
-                  <a href="product.html?id=${product.id}" class="arrow-btn">
-                    <svg
-                      width="26"
-                      height="26"
-                      viewBox="0 0 26 26"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7.48242 19.7627L19.9824 7.2627C20.1289 7.13249 20.2266 6.97786 20.2754 6.79883C20.3242 6.61979 20.3242 6.43669 20.2754 6.24951C20.2266 6.06234 20.137 5.90365 20.0068 5.77344C19.8766 5.64323 19.7179 5.55371 19.5308 5.50488C19.3436 5.45605 19.1605 5.45605 18.9814 5.50488C18.8024 5.55371 18.6478 5.65137 18.5176 5.79785L6.01758 18.2979C5.82227 18.5094 5.72461 18.7536 5.72461 19.0303C5.72461 19.307 5.82633 19.547 6.02979 19.7505C6.23324 19.9539 6.47331 20.0557 6.75 20.0557C7.02669 20.0557 7.27083 19.958 7.48242 19.7627ZM18.2002 15.9053C18.2165 16.1982 18.3223 16.4424 18.5176 16.6377C18.7129 16.833 18.957 16.9307 19.25 16.9307C19.543 16.9307 19.7871 16.833 19.9824 16.6377C20.1777 16.4424 20.2835 16.1982 20.2998 15.9053V6.53027C20.2835 6.2373 20.1777 5.99316 19.9824 5.79785C19.7871 5.60254 19.543 5.49675 19.25 5.48047H9.875C9.58203 5.49675 9.33789 5.60254 9.14258 5.79785C8.94727 5.99316 8.84961 6.2373 8.84961 6.53027C8.84961 6.82324 8.94727 7.06738 9.14258 7.2627C9.33789 7.45801 9.58203 7.5638 9.875 7.58008H18.2002V15.9053Z"
-                        fill="currentColor"
-                      />
-                    </svg>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-shopping-cart"
+                      >
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path
+                          d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                        ></path>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+                <img src="images/product-1.jpg" alt="" />
+              </div>
+              <div class="product-content">
+                <div class="product-content-left">
+                  <a href="product.html?id=${product.id}">
+                    <h3>${product.name}</h3>
                   </a>
+                  <div class="price">
+                    <span class="offered-price">$${product.price.offer.toFixed(
+                      2
+                    )}</span>
+                    ${
+                      product.price.is_offer_active
+                        ? `<del class="original-price">$${product.price.original.toFixed(
+                            2
+                          )}</del>`
+                        : ""
+                    }
+                  </div>
                 </div>
-              </div>`;
+                <a href="product.html?id=${product.id}" class="arrow-btn">
+                  <svg
+                    width="26"
+                    height="26"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.48242 19.7627L19.9824 7.2627C20.1289 7.13249 20.2266 6.97786 20.2754 6.79883C20.3242 6.61979 20.3242 6.43669 20.2754 6.24951C20.2266 6.06234 20.137 5.90365 20.0068 5.77344C19.8766 5.64323 19.7179 5.55371 19.5308 5.50488C19.3436 5.45605 19.1605 5.45605 18.9814 5.50488C18.8024 5.55371 18.6478 5.65137 18.5176 5.79785L6.01758 18.2979C5.82227 18.5094 5.72461 18.7536 5.72461 19.0303C5.72461 19.307 5.82633 19.547 6.02979 19.7505C6.23324 19.9539 6.47331 20.0557 6.75 20.0557C7.02669 20.0557 7.27083 19.958 7.48242 19.7627ZM18.2002 15.9053C18.2165 16.1982 18.3223 16.4424 18.5176 16.6377C18.7129 16.833 18.957 16.9307 19.25 16.9307C19.543 16.9307 19.7871 16.833 19.9824 16.6377C20.1777 16.4424 20.2835 16.1982 20.2998 15.9053V6.53027C20.2835 6.2373 20.1777 5.99316 19.9824 5.79785C19.7871 5.60254 19.543 5.49675 19.25 5.48047H9.875C9.58203 5.49675 9.33789 5.60254 9.14258 5.79785C8.94727 5.99316 8.84961 6.2373 8.84961 6.53027C8.84961 6.82324 8.94727 7.06738 9.14258 7.2627C9.33789 7.45801 9.58203 7.5638 9.875 7.58008H18.2002V15.9053Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>`;
+
+    productMainWrap.innerHTML = ProductHTML;
+
+    insertInto?.appendChild(productMainWrap);
   });
-});
+};
+
+insertProducts(
+  offerProducts.slice(0, 4),
+  "col-lg-3 col-md-6 d-flex align-items-stretch",
+  offerProductsContainer
+);
+
+insertProducts(skinFaceProducts, "swiper-slide", swiperContainer1);
+insertProducts(moisturizerProducts, "swiper-slide", swiperContainer2);
+insertProducts(serumProducts, "swiper-slide", swiperContainer3);
+insertProducts(offerProducts, "swiper-slide", swiperContainer4);
