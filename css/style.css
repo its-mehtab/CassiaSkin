@@ -52,9 +52,27 @@ body {
   padding-bottom: 80px;
 }
 
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
 header {
   background-color: #f4ffcf;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1019607843);
+}
+header.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  animation: fadein 0.3s;
 }
 header nav.navbar {
   padding: 15px 0;
@@ -119,7 +137,8 @@ h1,
 
 .play-btn {
   background-color: rgba(255, 255, 255, 0.7019607843);
-  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+          backdrop-filter: blur(8.5px);
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -471,7 +490,8 @@ h1,
   top: 0;
   left: 0;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: -2;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) h3 {
@@ -490,7 +510,8 @@ h1,
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box .skin-care-box-image img {
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box h3 {
   color: #0a3366;
@@ -555,6 +576,39 @@ h1,
   line-height: 18px;
 }
 
+.product-icons {
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+}
+.product-icons li a {
+  background-color: #f46700;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px;
+  min-width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.product-icons li .wishlist-btn.active svg {
+  fill: #fff;
+}
+.product-icons li:first-child a {
+  background-color: #0a3366;
+  text-wrap: nowrap;
+  font-size: 16px;
+}
+.product-icons li + li {
+  margin-left: 5px;
+}
+
 .product-item {
   background-color: #fff;
   border-radius: 15px;
@@ -577,6 +631,7 @@ h1,
   justify-content: space-between;
   padding: 20px 25px;
   border-top: 1px solid #efe9e9;
+  background-color: #fff;
 }
 .product-item .product-content h3 {
   font-size: 20px;
@@ -618,39 +673,6 @@ h1,
   background-color: #f46700;
 }
 
-.product-icons {
-  position: absolute;
-  left: 50%;
-  bottom: -100%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-}
-.product-icons li a {
-  background-color: #f46700;
-  border-radius: 10px;
-  color: #fff;
-  padding: 10px;
-  min-width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-.product-icons li .wishlist-btn.active svg {
-  fill: #fff;
-}
-.product-icons li:first-child a {
-  background-color: #0a3366;
-  text-wrap: nowrap;
-  font-size: 16px;
-}
-.product-icons li + li {
-  margin-left: 5px;
-}
-
 .features-item {
   padding-top: 40px;
 }
@@ -674,7 +696,8 @@ h1,
 }
 
 .why-us-item ul {
-  column-count: 2;
+  -moz-column-count: 2;
+       column-count: 2;
   margin: 25px 0;
 }
 .why-us-item ul li {
@@ -1366,7 +1389,8 @@ form .form-control {
     font-size: 14px;
   }
   .why-us-item ul {
-    column-count: 1;
+    -moz-column-count: 1;
+         column-count: 1;
   }
   .breadcrumb li {
     font-size: 15px;

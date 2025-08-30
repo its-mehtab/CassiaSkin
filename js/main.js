@@ -750,7 +750,7 @@ const insertProducts = (productsArry, wrapperClass, insertInto) => {
                 }
                 <ul class="product-icons">
                   <li>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal">Quick View</a>
+                    <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#productDetailsModal">Quick View</a>
                   </li>
                   <li>
                     <a href="#" class="wishlist-btn">
@@ -785,7 +785,7 @@ const insertProducts = (productsArry, wrapperClass, insertInto) => {
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="#" class="cart-btn">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -860,3 +860,198 @@ insertProducts(skinFaceProducts, "swiper-slide", swiperContainer1);
 insertProducts(moisturizerProducts, "swiper-slide", swiperContainer2);
 insertProducts(serumProducts, "swiper-slide", swiperContainer3);
 insertProducts(offerProducts, "swiper-slide", swiperContainer4);
+
+const productBtns = document.querySelectorAll(".product-icons");
+const productDetailsModal = document.querySelector(
+  "#productDetailsModal .product-details-sec"
+);
+
+productBtns.forEach((currBtn) => {
+  currBtn.addEventListener("click", (e) => {
+    const quickViewBtn = e.target.closest(".quick-view-btn");
+    if (!quickViewBtn) return;
+
+    productDetailsModal && (productDetailsModal.innerHTML = "");
+    const clickedProduct = e.target.closest(".product-item").dataset.id;
+
+    const product = findProductById(clickedProduct);
+
+    const detailsModalContent = document.createElement("div");
+    detailsModalContent.className = "container";
+
+    detailsModalContent.innerHTML = `<div class="row gx-lg-5">
+                  <div class="col-lg-6">
+                    <div class="product-img rounded-5 overflow-hidden">
+                      <img src="images/product-1.jpg" alt="product-img" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="product-details-content mt-5 mt-lg-0">
+                      ${
+                        product.price.is_offer_active
+                          ? `<div class="offer-text position-static d-inline-block">
+                          ${product.offers.description}
+                        </div>`
+                          : ""
+                      }
+                      <h2>${product.name}</h2>
+                      <p>
+                        ${product.description}
+                      </p>
+                      <div class="price">
+                        <span class="offered-price">$${product.price.offer.toFixed(
+                          2
+                        )}</span>
+                        ${
+                          product.price.is_offer_active
+                            ? `<del class="original-price">$${product.price.original.toFixed(
+                                2
+                              )}</del>`
+                            : ""
+                        }
+                      </div>
+                      <div class="quantity-wrap">
+                        <button class="decrement-btn">
+                          <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <input
+                          type="text"
+                          id="quantity"
+                          value="1"
+                          min="1"
+                          readonly
+                        />
+                        <button class="increment-btn">
+                          <i class="fa-solid fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="btn-wrap d-flex flex-wrap gap-4">
+                        <a href="" class="button primary-btn">Add to Cart</a>
+                        <a href="" class="button secondary-btn"
+                          >Add to Wishlist</a
+                        >
+                      </div>
+                      <ul class="product-meta">
+                        <li><span>SKU:</span> ${product.sku}</li>
+                        <li><span>Category:</span> ${product.category}</li>
+                        <li>
+                          <span>Tags:</span> ${product.tags}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>`;
+
+    productDetailsModal?.appendChild(detailsModalContent);
+  });
+});
+
+function findProductById(id) {
+  return products.find((product) => parseInt(product.id) === parseInt(id));
+}
+
+function generateId() {
+  return Date.now() + "-" + Math.floor(Math.random() * 1000);
+}
+
+// ===============================================================================
+// Cart Functionality
+
+let cartItems = [];
+
+// Load cart items from localStorage on page load
+function loadCartFromLocalStorage() {
+  const storedCart = localStorage.getItem("cart");
+  if (storedCart) {
+    cartItems = JSON.parse(storedCart);
+  }
+}
+loadCartFromLocalStorage();
+
+productBtns.forEach((currBtn) => {
+  currBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const cartBtn = e.target.closest(".cart-btn");
+    if (!cartBtn) return;
+
+    const productId = parseInt(cartBtn.closest(".product-item").dataset.id);
+
+    const existingIndex = cartItems.findIndex(
+      (item) => parseInt(item.productId) === productId
+    );
+
+    if (existingIndex === -1) {
+      cartItems.push({
+        id: generateId(),
+        productId,
+        userId: "guest",
+        quantity: 1,
+      });
+      addToCart();
+    } else {
+      cartItems = cartItems.map((item, index) =>
+        index === existingIndex
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  });
+});
+
+const miniCartContainer = document.querySelector(".cart-items");
+miniCartContainer && (miniCartContainer.innerHTML = "");
+
+function addToCart() {
+  cartItems.forEach((currCart) => {
+    const miniCartItem = document.createElement("li");
+    miniCartItem.dataset.id = currCart.productId;
+
+    const product = findProductById(currCart.productId);
+
+    miniCartItem.innerHTML = `<a href="product.html?id=${product.id}" class="cart-item-img">
+                <img src="images/product-1.jpg" alt="">
+              </a>
+              <div class="cart-item-content">
+                <a href="product.html?id=${product.id}">
+                  <h5>${product.name}</h5>
+                </a>
+                <div class="d-flex align-items-center gap-4">
+                  <div class="quantity-wrap">
+                    <button class="decrement-btn">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input type="text" id="quantity" value="1" min="1" readonly="">
+                    <button class="increment-btn">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                  <p>$${product.price.offer}</p>
+                </div>
+              </div>
+              <button class="remove-btn">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>`;
+
+    miniCartContainer.appendChild(miniCartItem);
+  });
+}
+addToCart();
+
+const removeBtns = document.querySelectorAll(".remove-btn");
+removeBtns.forEach((currBtn) => {
+  currBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const clickedCart = e.target.closest("li");
+
+    removeFromCart(clickedCart.dataset.id);
+  });
+});
+
+function removeFromCart(id) {
+  cartItems = cartItems.filter((item) => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+}

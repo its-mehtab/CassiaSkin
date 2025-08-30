@@ -58,9 +58,31 @@ body {
   padding-bottom: 80px;
 }
 
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
 header {
   background-color: #f4ffcf;
   border-bottom: 1px solid #0000001a;
+
+  &.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    animation: fadein 0.3s;
+  }
 
   nav.navbar {
     padding: 15px 0;
@@ -640,6 +662,49 @@ h1,
   line-height: 18px;
 }
 
+.product-icons {
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+
+  li {
+    a {
+      background-color: $secondary-color;
+      border-radius: 10px;
+      color: #fff;
+      padding: 10px;
+      min-width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .wishlist-btn.active {
+      svg {
+        fill: #fff;
+      }
+    }
+
+    &:first-child {
+      a {
+        background-color: #0a3366;
+        text-wrap: nowrap;
+        font-size: 16px;
+      }
+    }
+  }
+
+  li + li {
+    margin-left: 5px;
+  }
+}
+
 .product-item {
   background-color: #fff;
   border-radius: 15px;
@@ -667,6 +732,7 @@ h1,
     justify-content: space-between;
     padding: 20px 25px;
     border-top: 1px solid #efe9e9;
+    background-color: #fff;
 
     h3 {
       font-size: 20px;
@@ -710,49 +776,6 @@ h1,
   &:hover {
     color: #fff;
     background-color: $secondary-color;
-  }
-}
-
-.product-icons {
-  position: absolute;
-  left: 50%;
-  bottom: -100%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-
-  li {
-    a {
-      background-color: $secondary-color;
-      border-radius: 10px;
-      color: #fff;
-      padding: 10px;
-      min-width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    }
-
-    .wishlist-btn.active {
-      svg {
-        fill: #fff;
-      }
-    }
-
-    &:first-child {
-      a {
-        background-color: #0a3366;
-        text-wrap: nowrap;
-        font-size: 16px;
-      }
-    }
-  }
-
-  li + li {
-    margin-left: 5px;
   }
 }
 
