@@ -119,8 +119,7 @@ h1,
 
 .play-btn {
   background-color: rgba(255, 255, 255, 0.7019607843);
-  -webkit-backdrop-filter: blur(8.5px);
-          backdrop-filter: blur(8.5px);
+  backdrop-filter: blur(8.5px);
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -472,8 +471,7 @@ h1,
   top: 0;
   left: 0;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -2;
 }
 .skin-care-slider .swiper-slide:not(.skin-care-active) h3 {
@@ -492,8 +490,7 @@ h1,
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box .skin-care-box-image img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .skin-care-slider .swiper-slide.skin-care-active .skin-care-box h3 {
   color: #0a3366;
@@ -572,7 +569,6 @@ h1,
   overflow: hidden;
 }
 .product-item .product-img img {
-  top: 0;
   transition: all ease-in-out 0.3s;
 }
 .product-item .product-content {
@@ -678,8 +674,7 @@ h1,
 }
 
 .why-us-item ul {
-  -moz-column-count: 2;
-       column-count: 2;
+  column-count: 2;
   margin: 25px 0;
 }
 .why-us-item ul li {
@@ -1371,8 +1366,7 @@ form .form-control {
     font-size: 14px;
   }
   .why-us-item ul {
-    -moz-column-count: 1;
-         column-count: 1;
+    column-count: 1;
   }
   .breadcrumb li {
     font-size: 15px;

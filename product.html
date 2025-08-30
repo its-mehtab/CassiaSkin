@@ -170,7 +170,7 @@
     <!-- Start Products Details Section -->
     <section class="product-details-sec sp-tb bg-1">
       <div class="container">
-        <div class="row gx-lg-5 align-items-center">
+        <div class="row gx-lg-5">
           <div class="col-lg-6">
             <div class="product-img rounded-5 overflow-hidden">
               <img src="images/product-1.jpg" alt="product-img" />
@@ -820,13 +820,15 @@
       });
     </script>
     <script>
+      const relatedProducts = document.querySelector(
+        ".relates-products-sec .row"
+      );
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
 
       const mainProduct = products.find((currProduct) => {
         return currProduct.id == id;
       });
-      console.log(mainProduct);
 
       const detailsContent = document.querySelector(
         ".product-details-sec .row"
@@ -881,6 +883,20 @@
               </ul>
             </div>
           </div>`;
+
+      relatedProducts.innerHTML = "";
+      const relatedProductsArray = products.filter((currProduct) => {
+        return (
+          currProduct.category === mainProduct.category &&
+          currProduct.id != mainProduct.id
+        );
+      });
+
+      insertProducts(
+        relatedProductsArray.slice(0, 4),
+        "col-lg-3 col-md-6 d-flex align-items-stretch",
+        relatedProducts
+      );
     </script>
   </body>
 </html>
