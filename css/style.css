@@ -102,6 +102,24 @@ header nav.navbar .header-icons {
 header nav.navbar .header-icons li + li {
   margin-left: 15px;
 }
+header nav.navbar .header-icons li a {
+  position: relative;
+}
+header nav.navbar .header-icons li a span {
+  width: 24px;
+  height: 24px;
+  background-color: #f46700;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 img {
   width: 100%;

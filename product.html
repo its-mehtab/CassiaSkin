@@ -63,6 +63,7 @@
             <ul class="header-icons d-flex">
               <li>
                 <a href="wishlist.html">
+                  <span class="wishlist-count">2</span>
                   <svg
                     width="37"
                     height="37"
@@ -82,7 +83,13 @@
                 </a>
               </li>
               <li>
-                <a href="cart.html">
+                <a
+                  href="#"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasCart"
+                  aria-controls="offcanvasCart"
+                >
+                  <span class="cart-count">2</span>
                   <svg
                     width="40"
                     height="32"
@@ -807,6 +814,301 @@
     </footer>
     <!-- End Footer Section -->
 
+    <!-- Cart Offcanvas -->
+    <div
+      class="offcanvas offcanvas-end bg-1"
+      tabindex="-1"
+      id="offcanvasCart"
+      aria-labelledby="offcanvasCartLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+        <h3>
+          Shopping Cart
+          <span class="cart-count">1</span>
+        </h3>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="cart-items">
+          <li>
+            <div class="cart-item-img">
+              <img src="images/product-1.jpg" alt="" />
+            </div>
+            <div class="cart-item-content">
+              <h5>Natural Face Cream</h5>
+              <div class="d-flex align-items-center gap-4">
+                <div class="quantity-wrap">
+                  <button class="decrement-btn">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input
+                    type="text"
+                    id="quantity"
+                    value="1"
+                    min="1"
+                    readonly=""
+                  />
+                  <button class="increment-btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+                <p>$29.00</p>
+              </div>
+            </div>
+            <button class="remove-btn">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <div class="cart-item-img">
+              <img src="images/product-1.jpg" alt="" />
+            </div>
+            <div class="cart-item-content">
+              <h5>Natural Face Cream</h5>
+              <div class="d-flex align-items-center gap-4">
+                <div class="quantity-wrap">
+                  <button class="decrement-btn">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input
+                    type="text"
+                    id="quantity"
+                    value="1"
+                    min="1"
+                    readonly=""
+                  />
+                  <button class="increment-btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+                <p>$29.00</p>
+              </div>
+            </div>
+            <button class="remove-btn">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <div class="cart-item-img">
+              <img src="images/product-1.jpg" alt="" />
+            </div>
+            <div class="cart-item-content">
+              <h5>Natural Face Cream</h5>
+              <div class="d-flex align-items-center gap-4">
+                <div class="quantity-wrap">
+                  <button class="decrement-btn">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input
+                    type="text"
+                    id="quantity"
+                    value="1"
+                    min="1"
+                    readonly=""
+                  />
+                  <button class="increment-btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+                <p>$29.00</p>
+              </div>
+            </div>
+            <button class="remove-btn">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <div class="cart-item-img">
+              <img src="images/product-1.jpg" alt="" />
+            </div>
+            <div class="cart-item-content">
+              <h5>Natural Face Cream</h5>
+              <div class="d-flex align-items-center gap-4">
+                <div class="quantity-wrap">
+                  <button class="decrement-btn">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input
+                    type="text"
+                    id="quantity"
+                    value="1"
+                    min="1"
+                    readonly=""
+                  />
+                  <button class="increment-btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+                <p>$29.00</p>
+              </div>
+            </div>
+            <button class="remove-btn">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <div class="cart-total bg-1">
+          <h4>
+            <span>Subtotal:</span>
+            <span>$58.00</span>
+          </h4>
+          <div class="d-flex flex-wrap mt-4 gap-3 justify-content-center">
+            <a href="cart.html" class="button primary-btn px-5 py-4 rounded-5"
+              >View Cart</a
+            >
+            <a
+              href="checkout.html"
+              class="button secondary-btn px-5 py-4 rounded-5"
+              >Checkout</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Modal  -->
+    <div
+      class="modal fade"
+      id="productDetailsModal"
+      tabindex="-1"
+      aria-labelledby="productDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-1">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section class="product-details-sec pb-5 pt-3">
+              <div class="container">
+                <div class="row gx-lg-5">
+                  <div class="col-lg-6">
+                    <div class="product-img rounded-5 overflow-hidden">
+                      <img src="images/product-1.jpg" alt="product-img" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="product-details-content mt-5 mt-lg-0">
+                      <div class="offer-text position-static d-inline-block">
+                        Get 20% Off
+                      </div>
+                      <h2>Green Beauty</h2>
+                      <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book.
+                      </p>
+                      <div class="price">
+                        <span class="offered-price">$89.00</span>
+                        <del class="original-price">$119.00</del>
+                      </div>
+                      <div class="quantity-wrap">
+                        <button class="decrement-btn">
+                          <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <input
+                          type="text"
+                          id="quantity"
+                          value="1"
+                          min="1"
+                          readonly
+                        />
+                        <button class="increment-btn">
+                          <i class="fa-solid fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="btn-wrap d-flex flex-wrap gap-4">
+                        <a href="" class="button primary-btn">Add to Cart</a>
+                        <a href="" class="button secondary-btn"
+                          >Add to Wishlist</a
+                        >
+                      </div>
+                      <ul class="product-meta">
+                        <li><span>SKU:</span> 123456</li>
+                        <li><span>Category:</span> Skincare</li>
+                        <li>
+                          <span>Tags:</span> Organic, Natural, Eco-friendly
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
@@ -879,7 +1181,7 @@
               <ul class="product-meta">
                 <li><span>SKU:</span> ${mainProduct.sku}</li>
                 <li><span>Category:</span> ${mainProduct.category}</li>
-                <li><span>Tags:</span> ${mainProduct.tags}</li>
+                <li><span>Tags:</span> ${mainProduct.tags.join(", ")}</li>
               </ul>
             </div>
           </div>`;

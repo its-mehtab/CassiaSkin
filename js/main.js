@@ -954,6 +954,9 @@ function generateId() {
   return Date.now() + "-" + Math.floor(Math.random() * 1000);
 }
 
+const cartCount = document.querySelectorAll(".cart-count");
+const removeBtns = document.querySelectorAll(".remove-btn");
+const quantityContainer = document.querySelectorAll(".quantity-wrap");
 // ===============================================================================
 // Cart Functionality
 
@@ -987,7 +990,6 @@ productBtns.forEach((currBtn) => {
         userId: "guest",
         quantity: 1,
       });
-      addToCart();
     } else {
       cartItems = cartItems.map((item, index) =>
         index === existingIndex
@@ -995,15 +997,17 @@ productBtns.forEach((currBtn) => {
           : item
       );
     }
+    updateCart();
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
   });
 });
 
 const miniCartContainer = document.querySelector(".cart-items");
-miniCartContainer && (miniCartContainer.innerHTML = "");
 
-function addToCart() {
+function updateCart() {
+  miniCartContainer && (miniCartContainer.innerHTML = "");
+
   cartItems.forEach((currCart) => {
     const miniCartItem = document.createElement("li");
     miniCartItem.dataset.id = currCart.productId;
@@ -1022,7 +1026,7 @@ function addToCart() {
                     <button class="decrement-btn">
                       <i class="fa-solid fa-minus"></i>
                     </button>
-                    <input type="text" id="quantity" value="1" min="1" readonly="">
+                    <input type="text" id="quantity" value="${currCart.quantity}" min="1" readonly="">
                     <button class="increment-btn">
                       <i class="fa-solid fa-plus"></i>
                     </button>
@@ -1037,21 +1041,49 @@ function addToCart() {
               </button>`;
 
     miniCartContainer.appendChild(miniCartItem);
+    updateCartCount();
+
+    miniCartContainer.querySelectorAll(".remove-btn").forEach((currBtn) => {
+      currBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const clickedCart = e.target.closest("li");
+        removeFromCart(clickedCart);
+      });
+    });
   });
 }
-addToCart();
+updateCart();
 
-const removeBtns = document.querySelectorAll(".remove-btn");
-removeBtns.forEach((currBtn) => {
-  currBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const clickedCart = e.target.closest("li");
+function removeFromCart(product) {
+  const id = parseInt(product.dataset.id);
+  product.remove();
+  cartItems = cartItems.filter((item) => item.productId !== id);
+  localStorage.setItem("cart", JSON.stringify(cartItems));
 
-    removeFromCart(clickedCart.dataset.id);
+  updateCart();
+  updateCartCount();
+}
+
+function updateCartCount() {
+  cartCount.forEach((currCartCount) => {
+    currCartCount.textContent = cartItems.length;
+  });
+}
+updateCartCount();
+
+document.addEventListener("DOMContentLoaded", function () {
+  quantityContainer.forEach((currContainer) => {
+    console.log(currContainer);
+
+    currContainer.addEventListener("click", (e) => {
+      console.log("clicked");
+
+      e.preventDefault();
+
+      const decrementBtn = e.target.closest(".decrement-btn");
+      console.log(decrementBtn);
+      const incrementBtn = e.target.closest(".increment-btn");
+      console.log(incrementBtn);
+    });
   });
 });
-
-function removeFromCart(id) {
-  cartItems = cartItems.filter((item) => item.id !== id);
-  localStorage.setItem("cart", JSON.stringify(cartItems));
-}
