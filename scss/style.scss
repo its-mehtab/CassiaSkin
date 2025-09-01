@@ -1231,7 +1231,7 @@ footer {
   margin-top: 20px;
 
   .button {
-    padding: 18px 30px;
+    padding: 12px 26px;
     border-radius: 16px;
   }
 }
@@ -1448,6 +1448,56 @@ form {
   }
 }
 
+.cart-table {
+  padding: 30px 30px;
+  border: 1px solid #0000001a;
+  border-radius: 40px;
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+
+    & + .cart-item {
+      border-top: 1px solid #0000001a;
+    }
+  }
+
+  .cart-item-content {
+    h5 {
+      font-weight: 600;
+      font-size: 22px;
+    }
+  }
+  .cart-item-img {
+    width: 100px;
+    line-height: 0;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .subtotal-details {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid #0000001a;
+
+    h4 {
+      font-size: 25px;
+      font-weight: 700;
+      color: $primary-color;
+
+      .subtotal-price {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
 @media (min-width: 1900px) {
   .banner-img {
     right: 300px;
@@ -1470,6 +1520,12 @@ form {
   .skin-care-slider .swiper-slide.skin-care-active {
     width: calc(100% - 480px);
     flex: 0 0 calc(100% - 480px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .skin-care-slider .swiper-slide .skin-care-box {
+    min-width: 645px !important;
   }
 }
 
@@ -1496,9 +1552,8 @@ form {
       height: 120px;
     }
   }
-
   .skin-care-slider .swiper-slide .skin-care-box {
-    width: 100%;
+    min-width: 100% !important;
   }
 
   .skin-care-slider .swiper-slide .skin-item {

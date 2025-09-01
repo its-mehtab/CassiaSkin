@@ -26,7 +26,7 @@
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="index.html">
             <img src="images/logo.svg" alt="CassiaSkin Logo" />
           </a>
           <button
@@ -43,9 +43,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html"
-                  >Home</a
-                >
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="shop.html">Shop</a>
@@ -119,7 +117,7 @@
               <div class="face-img-1">
                 <img src="images/face-img1.png" alt="face-img" />
               </div>
-              <h1>Green Beauty</h1>
+              <h1>Loading...</h1>
               <ul class="breadcrumb">
                 <li>
                   <a href="index.html" class="">Home</a>
@@ -127,7 +125,7 @@
                 <li>
                   <a href="shop.html" class="">Shop</a>
                 </li>
-                <li>Green Beauty</li>
+                <li>Loading...</li>
               </ul>
             </div>
           </div>
@@ -225,7 +223,7 @@
     <!-- End Products Details Section -->
 
     <!-- Start Related Products Section -->
-    <section class="relates-products-sec sp-b bg-1">
+    <section class="related-products-sec sp-b bg-1">
       <div class="container">
         <div class="heading-wrap text-center">
           <h2 class="common-head">Related products</h2>
@@ -1011,7 +1009,7 @@
         <div class="cart-total bg-1">
           <h4>
             <span>Subtotal:</span>
-            <span>$58.00</span>
+            <span class="subtotal-price">$58.00</span>
           </h4>
           <div class="d-flex flex-wrap mt-4 gap-3 justify-content-center">
             <a href="cart.html" class="button primary-btn px-5 py-4 rounded-5"
@@ -1120,85 +1118,6 @@
       Fancybox.bind("[data-fancybox]", {
         // Your custom options
       });
-    </script>
-    <script>
-      const relatedProducts = document.querySelector(
-        ".relates-products-sec .row"
-      );
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
-
-      const mainProduct = products.find((currProduct) => {
-        return currProduct.id == id;
-      });
-
-      const detailsContent = document.querySelector(
-        ".product-details-sec .row"
-      );
-      detailsContent.innerHTML = `<div class="col-lg-6">
-            <div class="product-img rounded-5 overflow-hidden">
-              <img src="images/product-1.jpg" alt="product-img" />
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="product-details-content mt-5 mt-lg-0">
-              ${
-                mainProduct.price.is_offer_active
-                  ? `<div class="offer-text position-static d-inline-block">
-                ${mainProduct.offers.description}
-              </div>`
-                  : ""
-              }
-              <h2>${mainProduct.name}</h2>
-              <p>
-                ${mainProduct.description}
-              </p>
-              <div class="price">
-                <span class="offered-price">$${mainProduct.price.offer.toFixed(
-                  2
-                )}</span>
-                ${
-                  mainProduct.price.is_offer_active
-                    ? `<del class="original-price">$${mainProduct.price.original.toFixed(
-                        2
-                      )}</del>`
-                    : ""
-                }
-              </div>
-              <div class="quantity-wrap">
-                <button class="decrement-btn">
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-                <input type="text" id="quantity" value="1" min="1" readonly />
-                <button class="increment-btn">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
-              </div>
-              <div class="btn-wrap d-flex flex-wrap gap-4">
-                <a href="" class="button primary-btn">Add to Cart</a>
-                <a href="" class="button secondary-btn">Add to Wishlist</a>
-              </div>
-              <ul class="product-meta">
-                <li><span>SKU:</span> ${mainProduct.sku}</li>
-                <li><span>Category:</span> ${mainProduct.category}</li>
-                <li><span>Tags:</span> ${mainProduct.tags.join(", ")}</li>
-              </ul>
-            </div>
-          </div>`;
-
-      relatedProducts.innerHTML = "";
-      const relatedProductsArray = products.filter((currProduct) => {
-        return (
-          currProduct.category === mainProduct.category &&
-          currProduct.id != mainProduct.id
-        );
-      });
-
-      insertProducts(
-        relatedProductsArray.slice(0, 4),
-        "col-lg-3 col-md-6 d-flex align-items-stretch",
-        relatedProducts
-      );
     </script>
   </body>
 </html>

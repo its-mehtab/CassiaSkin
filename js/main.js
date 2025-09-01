@@ -702,6 +702,8 @@ const products = [
 const offerProductsContainer = document.querySelector(
   ".offer-products-sec .row"
 );
+const relatedProducts = document.querySelector(".related-products-sec .row");
+
 const swiperContainer = document.querySelectorAll(
   ".products-tab .swiper-wrapper"
 );
@@ -861,6 +863,92 @@ insertProducts(moisturizerProducts, "swiper-slide", swiperContainer2);
 insertProducts(serumProducts, "swiper-slide", swiperContainer3);
 insertProducts(offerProducts, "swiper-slide", swiperContainer4);
 
+// ======================================================================
+const pathname = window.location.pathname;
+if (pathname.includes("product")) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const detailsBannerHead = document.querySelector(".banner-content h1");
+  const detailsBreadcrumb = document.querySelector(
+    ".banner-content .breadcrumb li:last-child"
+  );
+
+  const mainProduct = products.find((currProduct) => {
+    return currProduct.id == id;
+  });
+
+  if (mainProduct) {
+    detailsBannerHead.textContent = mainProduct.name;
+    detailsBreadcrumb.textContent = mainProduct.name;
+
+    const detailsContent = document.querySelector(".product-details-sec .row");
+    detailsContent.innerHTML = `<div class="col-lg-6">
+                <div class="product-img rounded-5 overflow-hidden">
+                  <img src="images/product-1.jpg" alt="product-img" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="product-details-content mt-5 mt-lg-0">
+                  ${
+                    mainProduct.price.is_offer_active
+                      ? `<div class="offer-text position-static d-inline-block">
+                    ${mainProduct.offers.description}
+                  </div>`
+                      : ""
+                  }
+                  <h2>${mainProduct.name}</h2>
+                  <p>
+                    ${mainProduct.description}
+                  </p>
+                  <div class="price">
+                    <span class="offered-price">$${mainProduct.price.offer.toFixed(
+                      2
+                    )}</span>
+                    ${
+                      mainProduct.price.is_offer_active
+                        ? `<del class="original-price">$${mainProduct.price.original.toFixed(
+                            2
+                          )}</del>`
+                        : ""
+                    }
+                  </div>
+                  <div class="quantity-wrap">
+                    <button class="decrement-btn">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input type="text" id="quantity" value="1" min="1" readonly />
+                    <button class="increment-btn">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                  <div class="btn-wrap d-flex flex-wrap gap-4">
+                    <a href="" class="button primary-btn">Add to Cart</a>
+                    <a href="" class="button secondary-btn">Add to Wishlist</a>
+                  </div>
+                  <ul class="product-meta">
+                    <li><span>SKU:</span> ${mainProduct.sku}</li>
+                    <li><span>Category:</span> ${mainProduct.category}</li>
+                    <li><span>Tags:</span> ${mainProduct.tags.join(", ")}</li>
+                  </ul>
+                </div>
+              </div>`;
+
+    relatedProducts.innerHTML = "";
+    const relatedProductsArray = products.filter((currProduct) => {
+      return (
+        currProduct.category === mainProduct.category &&
+        currProduct.id != mainProduct.id
+      );
+    });
+
+    insertProducts(
+      relatedProductsArray.slice(0, 4),
+      "col-lg-3 col-md-6 d-flex align-items-stretch",
+      relatedProducts
+    );
+  }
+}
+
 const productBtns = document.querySelectorAll(".product-icons");
 const productDetailsModal = document.querySelector(
   "#productDetailsModal .product-details-sec"
@@ -956,7 +1044,7 @@ function generateId() {
 
 const cartCount = document.querySelectorAll(".cart-count");
 const removeBtns = document.querySelectorAll(".remove-btn");
-const quantityContainer = document.querySelectorAll(".quantity-wrap");
+
 // ===============================================================================
 // Cart Functionality
 
@@ -999,18 +1087,23 @@ productBtns.forEach((currBtn) => {
     }
     updateCart();
 
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    saveCartToLocalStorage();
   });
 });
 
 const miniCartContainer = document.querySelector(".cart-items");
+const mainCartContainer = document.querySelector(".cart-table ul");
 
 function updateCart() {
   miniCartContainer && (miniCartContainer.innerHTML = "");
+  mainCartContainer && (mainCartContainer.innerHTML = "");
 
   cartItems.forEach((currCart) => {
     const miniCartItem = document.createElement("li");
+    const mainCartItem = document.createElement("li");
+    mainCartItem.className = "cart-item";
     miniCartItem.dataset.id = currCart.productId;
+    mainCartItem.dataset.id = currCart.productId;
 
     const product = findProductById(currCart.productId);
 
@@ -1040,10 +1133,78 @@ function updateCart() {
                 </svg>
               </button>`;
 
+    mainCartItem.innerHTML = `<div class="cart-left d-flex gap-5 align-items-center">
+                    <a href="product.html?id=${
+                      product.id
+                    }" class="cart-item-img">
+                      <img src="images/product-1.jpg" alt="" />
+                    </a>
+                    <div class="cart-item-content">
+                      <a href="product.html">
+                        <h5>${product.name}</h5>
+                      </a>
+                      <div class="price">
+                        <span class="offered-price">$${product.price.offer.toFixed(
+                          2
+                        )}</span>
+                        ${
+                          product.price.is_offer_active
+                            ? `<del class="original-price">$${product.price.original.toFixed(
+                                2
+                              )}</del>`
+                            : ""
+                        }
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart-right d-flex gap-5 align-items-center">
+                    <div class="quantity-wrap">
+                      <button class="decrement-btn">
+                        <i class="fa-solid fa-minus"></i>
+                      </button>
+                      <input
+                        type="text"
+                        id="quantity"
+                        value="1"
+                        min="1"
+                        readonly=""
+                      />
+                      <button class="increment-btn">
+                        <i class="fa-solid fa-plus"></i>
+                      </button>
+                    </div>
+                    <button class="remove-btn">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>`;
+
     miniCartContainer.appendChild(miniCartItem);
+    mainCartContainer?.appendChild(mainCartItem);
     updateCartCount();
 
     miniCartContainer.querySelectorAll(".remove-btn").forEach((currBtn) => {
+      currBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const clickedCart = e.target.closest("li");
+        removeFromCart(clickedCart);
+      });
+    });
+    mainCartContainer?.querySelectorAll(".remove-btn").forEach((currBtn) => {
       currBtn.addEventListener("click", (e) => {
         e.preventDefault();
         const clickedCart = e.target.closest("li");
@@ -1058,10 +1219,11 @@ function removeFromCart(product) {
   const id = parseInt(product.dataset.id);
   product.remove();
   cartItems = cartItems.filter((item) => item.productId !== id);
-  localStorage.setItem("cart", JSON.stringify(cartItems));
+  saveCartToLocalStorage();
 
   updateCart();
   updateCartCount();
+  checkEmptyCart();
 }
 
 function updateCartCount() {
@@ -1071,19 +1233,53 @@ function updateCartCount() {
 }
 updateCartCount();
 
-document.addEventListener("DOMContentLoaded", function () {
-  quantityContainer.forEach((currContainer) => {
-    console.log(currContainer);
+const cartContainer = document.querySelector(".cart-items");
 
-    currContainer.addEventListener("click", (e) => {
-      console.log("clicked");
+cartContainer.addEventListener("click", (e) => {
+  const quantityContainer = e.target.closest(".quantity-wrap");
+  if (!quantityContainer) return; // only handle clicks inside quantity-wrap
+  e.preventDefault();
 
-      e.preventDefault();
+  const cartItemLi = e.target.closest("li");
+  if (!cartItemLi) return; // safety check
 
-      const decrementBtn = e.target.closest(".decrement-btn");
-      console.log(decrementBtn);
-      const incrementBtn = e.target.closest(".increment-btn");
-      console.log(incrementBtn);
-    });
-  });
+  const clickedCartId = parseInt(cartItemLi.dataset.id);
+
+  const existingIndex = cartItems.findIndex(
+    (item) => parseInt(item.productId) === clickedCartId
+  );
+
+  if (existingIndex === -1) return; // product not found in cart
+
+  const quantityInput = quantityContainer.querySelector("#quantity");
+  let currentQty = parseInt(quantityInput.value);
+
+  const decrementBtn = e.target.closest(".decrement-btn");
+  const incrementBtn = e.target.closest(".increment-btn");
+
+  if (!decrementBtn && !incrementBtn) return;
+
+  if (decrementBtn && currentQty > 1) {
+    currentQty--;
+  } else if (incrementBtn) {
+    currentQty++;
+  }
+
+  quantityInput.value = currentQty;
+
+  cartItems[existingIndex].quantity = currentQty;
+
+  saveCartToLocalStorage();
 });
+
+function saveCartToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+}
+
+function checkEmptyCart() {
+  if (cartItems.length === 0) {
+    miniCartContainer.innerHTML = "<li>Your cart is empty.</li>";
+    mainCartContainer.innerHTML = "<li>Your cart is empty.</li>";
+  }
+}
+checkEmptyCart();
