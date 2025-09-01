@@ -1276,10 +1276,17 @@ function saveCartToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
+// const cartSubtotalContainer = document.querySelectorAll(".cart-total");
+
 function checkEmptyCart() {
   if (cartItems.length === 0) {
     miniCartContainer.innerHTML = "<li>Your cart is empty.</li>";
-    mainCartContainer.innerHTML = "<li>Your cart is empty.</li>";
+    mainCartContainer &&
+      (mainCartContainer.innerHTML = "<li>Your cart is empty.</li>");
+
+    // cartSubtotalContainer.forEach((currContainer) => {
+    //   currContainer.remove();
+    // });
   }
 }
 checkEmptyCart();
