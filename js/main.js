@@ -1276,7 +1276,7 @@ function saveCartToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
-// const cartSubtotalContainer = document.querySelectorAll(".cart-total");
+const cartSubtotalContainer = document.querySelectorAll(".cart-total");
 
 function checkEmptyCart() {
   if (cartItems.length === 0) {
@@ -1285,8 +1285,26 @@ function checkEmptyCart() {
       (mainCartContainer.innerHTML = "<li>Your cart is empty.</li>");
 
     // cartSubtotalContainer.forEach((currContainer) => {
-    //   currContainer.remove();
+    //   currContainer.querySelector(".btn-wrap").remove();
     // });
+  } else {
+    console.log("prodcuts available");
+
+    // const miniCartBtns = document.createElement("div");
+    // const mainCartBtns = document.createElement("div");
+
+    // miniCartBtns.className =
+    //   "btn-wrap d-flex flex-wrap mt-4 gap-3 justify-content-center";
+    // mainCartBtns.className = "btn-wrap mt-0 d-flex flex-wrap gap-4";
+
+    // miniCartBtns.innerHTML = `<a href="cart.html" class="button primary-btn px-5 py-4 rounded-5">View Cart</a>
+    //         <a href="checkout.html" class="button secondary-btn px-5 py-4 rounded-5">Checkout</a>`;
+    // mainCartBtns.innerHTML = `<a href="checkout.html" class="button primary-btn">Checkout</a>
+    //               <a href="#" class="button secondary-btn">Empty Cart</a>`;
+
+    // miniCartContainer &&
+    //   miniCartContainer.closest(".offcanvas-body").appendChild(miniCartBtns);
+    // mainCartContainer && mainCartContainer.appendChild(mainCartBtns);
   }
 }
 checkEmptyCart();
