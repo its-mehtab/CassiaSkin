@@ -1044,6 +1044,7 @@ function generateId() {
 
 const cartCount = document.querySelectorAll(".cart-count");
 const removeBtns = document.querySelectorAll(".remove-btn");
+const subTotalWrap = document.querySelectorAll(".subtotal-price");
 
 // ===============================================================================
 // Cart Functionality
@@ -1086,8 +1087,8 @@ productBtns.forEach((currBtn) => {
       );
     }
     updateCart();
-
     saveCartToLocalStorage();
+    calcSubtotal();
   });
 });
 
@@ -1196,6 +1197,7 @@ function updateCart() {
     miniCartContainer.appendChild(miniCartItem);
     mainCartContainer?.appendChild(mainCartItem);
     updateCartCount();
+    checkEmptyCart();
 
     miniCartContainer.querySelectorAll(".remove-btn").forEach((currBtn) => {
       currBtn.addEventListener("click", (e) => {
@@ -1213,7 +1215,6 @@ function updateCart() {
     });
   });
 }
-updateCart();
 
 function removeFromCart(product) {
   const id = parseInt(product.dataset.id);
@@ -1224,6 +1225,7 @@ function removeFromCart(product) {
   updateCart();
   updateCartCount();
   checkEmptyCart();
+  calcSubtotal();
 }
 
 function updateCartCount() {
@@ -1270,13 +1272,17 @@ cartContainer.addEventListener("click", (e) => {
   cartItems[existingIndex].quantity = currentQty;
 
   saveCartToLocalStorage();
+  calcSubtotal();
 });
 
 function saveCartToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
-const cartSubtotalContainer = document.querySelectorAll(".cart-total");
+const miniCartBtns = document.querySelector(
+  ".offcanvas-body .cart-total .btn-wrap"
+);
+const mainCartBtns = document.querySelector(".subtotal-details .btn-wrap");
 
 function checkEmptyCart() {
   if (cartItems.length === 0) {
@@ -1284,27 +1290,34 @@ function checkEmptyCart() {
     mainCartContainer &&
       (mainCartContainer.innerHTML = "<li>Your cart is empty.</li>");
 
-    // cartSubtotalContainer.forEach((currContainer) => {
-    //   currContainer.querySelector(".btn-wrap").remove();
-    // });
+    miniCartBtns && (miniCartBtns.innerHTML = "");
+    mainCartBtns && (mainCartBtns.innerHTML = "");
   } else {
-    console.log("prodcuts available");
+    miniCartBtns &&
+      (miniCartBtns.innerHTML = `<a href="cart.html" class="button primary-btn px-5 py-4 rounded-5">View Cart</a>
+        <a href="checkout.html" class="button secondary-btn px-5 py-4 rounded-5">Checkout</a>`);
 
-    // const miniCartBtns = document.createElement("div");
-    // const mainCartBtns = document.createElement("div");
-
-    // miniCartBtns.className =
-    //   "btn-wrap d-flex flex-wrap mt-4 gap-3 justify-content-center";
-    // mainCartBtns.className = "btn-wrap mt-0 d-flex flex-wrap gap-4";
-
-    // miniCartBtns.innerHTML = `<a href="cart.html" class="button primary-btn px-5 py-4 rounded-5">View Cart</a>
-    //         <a href="checkout.html" class="button secondary-btn px-5 py-4 rounded-5">Checkout</a>`;
-    // mainCartBtns.innerHTML = `<a href="checkout.html" class="button primary-btn">Checkout</a>
-    //               <a href="#" class="button secondary-btn">Empty Cart</a>`;
-
-    // miniCartContainer &&
-    //   miniCartContainer.closest(".offcanvas-body").appendChild(miniCartBtns);
-    // mainCartContainer && mainCartContainer.appendChild(mainCartBtns);
+    mainCartBtns &&
+      (mainCartBtns.innerHTML = `<a href="checkout.html" class="button primary-btn">Checkout</a>
+        <a href="#" class="button secondary-btn">Empty Cart</a>`);
   }
 }
+
+updateCart();
 checkEmptyCart();
+console.log(cartItems);
+
+function calcSubtotal() {
+  const subtotalPrice = cartItems.reduce((acc, currCart) => {
+    const currCartProduct = findProductById(currCart.productId);
+
+    const currCartPrice = currCartProduct.price.offer;
+
+    return currCartPrice * currCart.quantity + acc;
+  }, 0);
+
+  subTotalWrap.forEach((currSubtotal) => {
+    currSubtotal.textContent = "$" + subtotalPrice.toFixed(2);
+  });
+}
+calcSubtotal();
