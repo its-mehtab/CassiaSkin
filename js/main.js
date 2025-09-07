@@ -719,6 +719,7 @@ const swiperContainer3 = document.querySelector(
 const swiperContainer4 = document.querySelector(
   "#products-tabpanel-3 .swiper-wrapper"
 );
+const allProductsContainer = document.querySelector(".all-products-sec .row");
 
 const skinFaceProducts = products.filter((product) => {
   return product.category === "Skin & Face";
@@ -737,6 +738,7 @@ offerProductsContainer && (offerProductsContainer.innerHTML = "");
 swiperContainer?.forEach((currContainer) => {
   currContainer.innerHTML = "";
 });
+allProductsContainer && (allProductsContainer.innerHTML = "");
 
 const insertProducts = (productsArry, wrapperClass, insertInto) => {
   productsArry.forEach((product) => {
@@ -862,6 +864,11 @@ insertProducts(skinFaceProducts, "swiper-slide", swiperContainer1);
 insertProducts(moisturizerProducts, "swiper-slide", swiperContainer2);
 insertProducts(serumProducts, "swiper-slide", swiperContainer3);
 insertProducts(offerProducts, "swiper-slide", swiperContainer4);
+insertProducts(
+  products,
+  "col-lg-3 col-md-6 d-flex align-items-stretch",
+  allProductsContainer
+);
 
 // ======================================================================
 const pathname = window.location.pathname;
@@ -1108,7 +1115,9 @@ function updateCart() {
 
     const product = findProductById(currCart.productId);
 
-    miniCartItem.innerHTML = `<a href="product.html?id=${product.id}" class="cart-item-img">
+    miniCartItem.innerHTML = `<a href="product.html?id=${
+      product.id
+    }" class="cart-item-img">
                 <img src="images/product-1.jpg" alt="">
               </a>
               <div class="cart-item-content">
@@ -1120,12 +1129,14 @@ function updateCart() {
                     <button class="decrement-btn">
                       <i class="fa-solid fa-minus"></i>
                     </button>
-                    <input type="text" id="quantity" value="${currCart.quantity}" min="1" readonly="">
+                    <input type="text" class="quantity-input" value="${
+                      currCart.quantity
+                    }" min="1" readonly="">
                     <button class="increment-btn">
                       <i class="fa-solid fa-plus"></i>
                     </button>
                   </div>
-                  <p>$${product.price.offer}</p>
+                  <p>$${product.price.offer.toFixed(2)}</p>
                 </div>
               </div>
               <button class="remove-btn">
@@ -1166,7 +1177,7 @@ function updateCart() {
                       </button>
                       <input
                         type="text"
-                        id="quantity"
+                        class="quantity-input"
                         value="1"
                         min="1"
                         readonly=""
@@ -1235,25 +1246,22 @@ function updateCartCount() {
 }
 updateCartCount();
 
-const cartContainer = document.querySelector(".cart-items");
-
-cartContainer.addEventListener("click", (e) => {
+function handleQuantityChange(e) {
   const quantityContainer = e.target.closest(".quantity-wrap");
-  if (!quantityContainer) return; // only handle clicks inside quantity-wrap
+  if (!quantityContainer) return;
   e.preventDefault();
 
   const cartItemLi = e.target.closest("li");
-  if (!cartItemLi) return; // safety check
+  if (!cartItemLi) return;
 
   const clickedCartId = parseInt(cartItemLi.dataset.id);
 
   const existingIndex = cartItems.findIndex(
     (item) => parseInt(item.productId) === clickedCartId
   );
+  if (existingIndex === -1) return;
 
-  if (existingIndex === -1) return; // product not found in cart
-
-  const quantityInput = quantityContainer.querySelector("#quantity");
+  const quantityInput = quantityContainer.querySelector(".quantity-input");
   let currentQty = parseInt(quantityInput.value);
 
   const decrementBtn = e.target.closest(".decrement-btn");
@@ -1268,12 +1276,14 @@ cartContainer.addEventListener("click", (e) => {
   }
 
   quantityInput.value = currentQty;
-
   cartItems[existingIndex].quantity = currentQty;
 
   saveCartToLocalStorage();
   calcSubtotal();
-});
+}
+
+mainCartContainer?.addEventListener("click", handleQuantityChange);
+miniCartContainer?.addEventListener("click", handleQuantityChange);
 
 function saveCartToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -1305,7 +1315,6 @@ function checkEmptyCart() {
 
 updateCart();
 checkEmptyCart();
-console.log(cartItems);
 
 function calcSubtotal() {
   const subtotalPrice = cartItems.reduce((acc, currCart) => {
