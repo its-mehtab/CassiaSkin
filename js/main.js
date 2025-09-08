@@ -125,7 +125,7 @@ const products = [
     id: 1,
     name: "Firming Night Serum",
     category: "Serums",
-    image: "images/product-19.jpg",
+    image: "images/firming-night-serum.jpg",
     description:
       "A silky overnight serum that supports skin’s natural renewal while you sleep. Peptides and botanical antioxidants help improve firmness, smooth fine lines, and boost elasticity. Wake to a more lifted, toned look with soft, cushiony hydration and a rested glow.",
     tags: ["Firming", "Night Serum", "Peptides"],
@@ -144,7 +144,7 @@ const products = [
     id: 2,
     name: "Hydra Serum",
     category: "Serums",
-    image: "images/product-30.jpg",
+    image: "images/hydra-serum.jpg",
     description:
       "Featherlight hydration that sinks in instantly and layers beautifully under makeup. A blend of multi-weight hyaluronic acid, mineral-rich water, and soothing panthenol floods skin with moisture for a fresh, plump look that lasts from morning to night without stickiness.",
     tags: ["Hydration", "Hyaluronic", "Serum"],
@@ -163,7 +163,7 @@ const products = [
     id: 3,
     name: "Youthful Eyes Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-4.jpg",
+    image: "images/youthful-eyes-cream.jpg",
     description:
       "A cushiony eye cream that visibly de-puffs and brightens the delicate under-eye area. Caffeine, ceramides, and light-reflecting minerals soften shadows, smooth fine lines, and strengthen the moisture barrier, leaving eyes refreshed, rested, and makeup-ready throughout the day.",
     tags: ["Eye Care", "De-puffing", "Brightening"],
@@ -182,7 +182,7 @@ const products = [
     id: 4,
     name: "Radiance Day Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-8.jpg",
+    image: "images/radiance-day-cream.jpg",
     description:
       "Daily moisturizer with built-in radiance. Lightweight, non-greasy hydration blends niacinamide and mineral SPF to even tone and defend against the look of dullness. Leaves skin softly luminous, comfortably moisturized, and perfectly prepped for makeup or no-makeup days.",
     tags: ["SPF", "Radiance", "Niacinamide"],
@@ -201,7 +201,7 @@ const products = [
     id: 5,
     name: "Glow Serum",
     category: "Serums",
-    image: "images/product-3.jpg",
+    image: "images/glow-serum.jpg",
     description:
       "A brightening vitamin C serum that revives tired-looking skin. Stabilized L-ascorbic acid teams with ferulic acid and anti-pollution botanicals to target uneven tone and boost glow. Skin appears clearer, smoother, and more luminous with consistent morning use.",
     tags: ["Brightening", "Vitamin C", "Glow"],
@@ -223,7 +223,7 @@ const products = [
     id: 6,
     name: "Gentle Exfoliating Scrub",
     category: "Skin & Face",
-    image: "images/product-9.jpg",
+    image: "images/gentle-exfoliating-scrub.jpg",
     description:
       "A soft, creamy scrub that refines texture without stripping. Rounded cellulose beads with lactic acid buff away dull surface cells, while aloe and oat calm sensitive complexions. Use once or twice weekly for instantly smoother, more even, makeup-ready skin.",
     tags: ["Exfoliating", "Sensitive Skin", "Lactic Acid"],
@@ -242,7 +242,7 @@ const products = [
     id: 7,
     name: "Blemish Corrector Serum",
     category: "Serums",
-    image: "images/product-7.jpg",
+    image: "images/blemish-corrector-serum.jpg",
     description:
       "Target active breakouts and stubborn marks with a clarifying blend of encapsulated salicylic acid, zinc, and soothing centella. This fast-absorbing formula helps unclog pores, reduce redness, and refine texture, promoting visibly clearer, calmer skin with continued use.",
     tags: ["Acne", "Blemish Correction", "Salicylic"],
@@ -264,7 +264,7 @@ const products = [
     id: 8,
     name: "Aqua Hydration Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-2.jpg",
+    image: "images/aqua-hydration-cream.jpg",
     description:
       "A cooling gel-cream that floods skin with long-lasting hydration. Multi-weight hyaluronic acid, squalane, and trehalose lock in moisture without heaviness, leaving combination and oily skin balanced, bouncy, and comfortably dewy through heat, humidity, and busy days.",
     tags: ["Hydrating", "Oil-Free", "Gel-Cream"],
@@ -283,7 +283,7 @@ const products = [
     id: 9,
     name: "Rejuvenating Night Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-6.jpg",
+    image: "images/rejuvenating-night-cream.jpg",
     description:
       "A plush night cream infused with bakuchiol, peptides, and ceramides to nourish and smooth as you sleep. Helps soften the look of fine lines, replenish moisture, and support a stronger barrier for fresh, rested, morning-after radiance.",
     tags: ["Anti-aging", "Night Use", "Ceramides"],
@@ -302,7 +302,7 @@ const products = [
     id: 10,
     name: "Soothing Day Lotion",
     category: "Moisturizers & Creams",
-    image: "images/product-31.jpg",
+    image: "images/soothing-day-lotion.jpg",
     description:
       "Lightweight daily moisturizer that calms and comforts stressed skin. Aloe, bisabolol, and vitamin E deliver breathable hydration that won’t clog pores. Skin feels balanced, soft, and ready for sunscreen or makeup with no greasy afterfeel.",
     tags: ["Lightweight", "Daily Use", "Calming"],
@@ -321,7 +321,7 @@ const products = [
     id: 11,
     name: "Collagen Boost Serum",
     category: "Serums",
-    image: "images/product-27.jpg",
+    image: "images/collagen-boost-serum.jpg",
     description:
       "A concentrated serum powered by signal peptides, amino acids, and vitamin B5 to visibly firm and smooth. Helps improve elasticity and bounce while replenishing moisture for a supple, youthful look that layers perfectly under moisturizers and sunscreens.",
     tags: ["Collagen", "Firming", "Peptides"],
@@ -340,7 +340,7 @@ const products = [
     id: 12,
     name: "Brightening Peel",
     category: "Skin & Face",
-    image: "images/product-15.jpg",
+    image: "images/brightening-peel.jpg",
     description:
       "A gentle at-home peel with mandelic, lactic, and fruit enzymes to smooth rough texture and brighten dullness. Rinses clean without tightness. Use weekly for a more refined look and a noticeably clearer, more radiant complexion.",
     tags: ["Brightening", "Peel", "AHA"],
@@ -359,7 +359,7 @@ const products = [
     id: 13,
     name: "Soothing Aloe Serum",
     category: "Serums",
-    image: "images/product-13.jpg",
+    image: "images/soothing-aloe-serum.jpg",
     description:
       "A calming serum for sensitive and reactive skin. Organic aloe, centella asiatica, and oat beta-glucan relieve visible redness and support a healthy barrier. Lightweight hydration absorbs fast, leaving skin soft, comfortable, and resilient to daily stressors.",
     tags: ["Aloe", "Sensitive Skin", "Calming"],
@@ -378,7 +378,7 @@ const products = [
     id: 14,
     name: "NutriRich Face Lotion",
     category: "Moisturizers & Creams",
-    image: "images/product-23.jpg",
+    image: "images/nutririch-face-lotion.jpg",
     description:
       "Nourishing everyday lotion packed with vitamins, plant oils, and barrier-supporting ceramides. Provides comfortable, medium-weight hydration that absorbs quickly without residue, leaving skin soft, healthy-looking, and evenly moisturized from morning till night.",
     tags: ["Nutrition", "Lotion", "Ceramides"],
@@ -397,7 +397,7 @@ const products = [
     id: 15,
     name: "Charcoal Detox Mask",
     category: "Skin & Face",
-    image: "images/product-21.jpg",
+    image: "images/charcoal-detox-mask.jpg",
     description:
       "A creamy charcoal mask that draws out impurities without over-drying. Kaolin, detoxifying binchotan charcoal, and willow bark refine the look of pores and smooth texture for a clearer, refreshed complexion in just ten minutes.",
     tags: ["Charcoal", "Detox", "Pore Care"],
@@ -416,7 +416,7 @@ const products = [
     id: 16,
     name: "Deep Moisture Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-14.jpg",
+    image: "images/deep-moisture-cream.jpg",
     description:
       "Luxuriously rich cream for dry, tight-feeling skin. Shea butter, squalane, and ceramides replenish lipids and lock in moisture to relieve flakiness and discomfort. Leaves skin velvety-soft and deeply nourished without heaviness or greasiness.",
     tags: ["Dry Skin", "Moisturizing", "Ceramides"],
@@ -435,7 +435,7 @@ const products = [
     id: 17,
     name: "Retinol Renewal Serum",
     category: "Serums",
-    image: "images/product-11.jpg",
+    image: "images/retinol-renewal-serum.jpg",
     description:
       "A gentle, encapsulated retinol treatment designed for nightly use. Supports smoother texture, refined pores, and a more even tone without excessive dryness. Balanced with squalane and soothing bisabolol to deliver results while maintaining comfort.",
     tags: ["Retinol", "Night", "Resurfacing"],
@@ -454,7 +454,7 @@ const products = [
     id: 18,
     name: "Vitamin E Serum",
     category: "Serums",
-    image: "images/product-10.jpg",
+    image: "images/vitamin-e-serum.jpg",
     description:
       "An intensely comforting serum for dry, compromised skin. Vitamin E, meadowfoam seed oil, and cholesterol help replenish essential lipids, support a healthier barrier, and defend against environmental stress, leaving skin cushioned and calm.",
     tags: ["Vitamin E", "Moisturizing", "Barrier Support"],
@@ -473,7 +473,7 @@ const products = [
     id: 19,
     name: "Anti-Pollution Day Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-20.jpg",
+    image: "images/anti-pollution-day-cream.jpg",
     description:
       "Daily moisturizer that shields against environmental stress. Antioxidant-rich green tea, niacinamide, and vitamin C help defend from pollution while hydrating and brightening. Leaves skin soft, smooth, and better protected during commutes and busy city days.",
     tags: ["Pollution Defense", "Day Cream", "Antioxidants"],
@@ -492,7 +492,7 @@ const products = [
     id: 20,
     name: "Smoothing Face Serum",
     category: "Serums",
-    image: "images/product-24.jpg",
+    image: "images/smoothing-face-serum.jpg",
     description:
       "A silky serum with micro-exfoliating polyhydroxy acids and niacinamide to visibly smooth and refine without irritation. Improves the look of rough patches and uneven tone, leaving skin soft, radiant, and perfectly prepped for moisturizer.",
     tags: ["Smoothing", "PHA", "Soft Skin"],
@@ -511,7 +511,7 @@ const products = [
     id: 21,
     name: "Cleansing Facial Foam",
     category: "Skin & Face",
-    image: "images/product-29.jpg",
+    image: "images/cleansing-facial-foam.jpg",
     description:
       "Airy foaming cleanser that lifts away impurities, sunscreen, and light makeup without stripping. Amino-acid surfactants keep the skin’s pH happy while glycerin maintains moisture. Skin feels fresh, comfortable, and balanced after every wash.",
     tags: ["Cleansing", "Foam", "pH Balanced"],
@@ -530,7 +530,7 @@ const products = [
     id: 22,
     name: "Balancing Toner Mist",
     category: "Skin & Face",
-    image: "images/product-5.jpg",
+    image: "images/balancing-toner-mist.jpg",
     description:
       "A replenishing facial mist that tones, hydrates, and soothes in one effortless step. Rose water, niacinamide, and panthenol help minimize the look of pores, calm redness, and refresh makeup anytime throughout the day.",
     tags: ["Toner", "Mist", "Niacinamide"],
@@ -549,7 +549,7 @@ const products = [
     id: 23,
     name: "Refreshing Day Gel",
     category: "Moisturizers & Creams",
-    image: "images/product-12.jpg",
+    image: "images/refreshing-day-gel.jpg",
     description:
       "A cooling morning gel that wakes up tired skin. Cucumber extract, vitamin B5, and hyaluronic acid instantly hydrate and refresh for a bright, shine-controlled start to your day. Absorbs fast and layers perfectly under SPF.",
     tags: ["Refreshing", "Morning Care", "Oil-Control"],
@@ -568,7 +568,7 @@ const products = [
     id: 24,
     name: "Detoxifying Night Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-25.jpg",
+    image: "images/detoxifying-night-cream.jpg",
     description:
       "Purifying night cream to reset congested skin. Clarifying clays, niacinamide, and antioxidant-rich blackcurrant seed oil help refine texture and calm visible blemishes while you sleep, revealing a clearer, smoother complexion by morning.",
     tags: ["Detox", "Night Cream", "Niacinamide"],
@@ -587,7 +587,7 @@ const products = [
     id: 25,
     name: "Pore-Refining Clay Mask",
     category: "Skin & Face",
-    image: "images/product-26.jpg",
+    image: "images/pore-refining-clay-mask.jpg",
     description:
       "A quick-acting clay mask that clarifies without cracking. Sulfur, kaolin, and glycolic acid reduce the look of excess oil and congestion, minimizing the appearance of pores over time for a balanced, smoother-looking complexion.",
     tags: ["Pores", "Clay Mask", "Oil Control"],
@@ -606,7 +606,7 @@ const products = [
     id: 26,
     name: "Vitamin C Face Wash",
     category: "Skin & Face",
-    image: "images/product-18.jpg",
+    image: "images/vitamin-c-face-wash.jpg",
     description:
       "Brightening daily cleanser with a splash of vitamin C and gentle surfactants to remove sunscreen and pollutants. Leaves skin feeling clean, not tight, and visibly fresher with continued use.",
     tags: ["Cleanser", "Vitamin C", "Brightening"],
@@ -625,7 +625,7 @@ const products = [
     id: 27,
     name: "Hyaluronic Hydrating Mist",
     category: "Skin & Face",
-    image: "images/product-28.jpg",
+    image: "images/hyaluronic-hydrating-mist.jpg",
     description:
       "Ultra-fine mist infused with multi-weight hyaluronic acid, sea minerals, and aloe to quench thirsty skin midday or post-cleanse. Restores bounce and a healthy glow without disturbing makeup, perfect for travel and desk refreshes.",
     tags: ["Hydrating", "Mist", "Hyaluronic"],
@@ -644,7 +644,7 @@ const products = [
     id: 28,
     name: "Overnight Lip Repair Balm",
     category: "Skin & Face",
-    image: "images/product-22.jpg",
+    image: "images/overnight-lip-repair-balm.jpg",
     description:
       "A deeply nourishing overnight treatment for dry, chapped lips. Shea butter, lanolin, and ceramides lock in moisture while berry antioxidants smooth flakes. Wake up to plush, pillowy-soft lips ready for color or balm-only days.",
     tags: ["Lips", "Overnight", "Repair"],
@@ -663,7 +663,7 @@ const products = [
     id: 29,
     name: "Niacinamide Clarity Serum",
     category: "Serums",
-    image: "images/product-16.jpg",
+    image: "images/niacinamide-clarity-serum.jpg",
     description:
       "A balancing serum with 10% niacinamide and zinc PCA to visibly refine pores, reduce excess oil, and even tone. Lightweight, non-sticky texture layers easily under moisturizers for a smoother, more clarified complexion over time.",
     tags: ["Niacinamide", "Oil Control", "Clarity"],
@@ -682,7 +682,7 @@ const products = [
     id: 30,
     name: "Ceramide Barrier Cream",
     category: "Moisturizers & Creams",
-    image: "images/product-17.jpg",
+    image: "images/ceramide-barrier-cream.jpg",
     description:
       "Rich yet breathable barrier cream with a dermatologist-inspired blend of ceramides, cholesterol, and fatty acids in an optimized ratio. Comforts dryness, reduces visible redness, and helps skin look healthier, bouncier, and more resilient day after day.",
     tags: ["Barrier", "Ceramides", "Repair"],
