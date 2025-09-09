@@ -240,7 +240,7 @@ const products = [
   },
   {
     id: 7,
-    name: "Blemish Corrector Serum",
+    name: "Blemish Remover Serum",
     category: "Serums",
     image: "images/blemish-corrector-serum.jpg",
     description:
@@ -811,7 +811,7 @@ const insertProducts = (productsArry, wrapperClass, insertInto) => {
                     </a>
                   </li>
                 </ul>
-                <img src="images/product-1.jpg" alt="" />
+                <img src="${product.image}" alt="" />
               </div>
               <div class="product-content">
                 <div class="product-content-left">
@@ -891,7 +891,7 @@ if (pathname.includes("product")) {
     const detailsContent = document.querySelector(".product-details-sec .row");
     detailsContent.innerHTML = `<div class="col-lg-6">
                 <div class="product-img rounded-5 overflow-hidden">
-                  <img src="images/product-1.jpg" alt="product-img" />
+                  <img src="${mainProduct.image}" alt="product-img" />
                 </div>
               </div>
               <div class="col-lg-6">
@@ -977,7 +977,7 @@ productBtns.forEach((currBtn) => {
     detailsModalContent.innerHTML = `<div class="row gx-lg-5">
                   <div class="col-lg-6">
                     <div class="product-img rounded-5 overflow-hidden">
-                      <img src="images/product-1.jpg" alt="product-img" />
+                      <img src="${product.image}" alt="product-img" />
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -1118,7 +1118,7 @@ function updateCart() {
     miniCartItem.innerHTML = `<a href="product.html?id=${
       product.id
     }" class="cart-item-img">
-                <img src="images/product-1.jpg" alt="">
+                <img src="${product.image}" alt="${product.name}">
               </a>
               <div class="cart-item-content">
                 <a href="product.html?id=${product.id}">
@@ -1149,7 +1149,7 @@ function updateCart() {
                     <a href="product.html?id=${
                       product.id
                     }" class="cart-item-img">
-                      <img src="images/product-1.jpg" alt="" />
+                      <img src="${product.image}" alt="${product.name}" />
                     </a>
                     <div class="cart-item-content">
                       <a href="product.html">
