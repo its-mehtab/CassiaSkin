@@ -923,14 +923,14 @@ if (pathname.includes("product")) {
                     <button class="decrement-btn">
                       <i class="fa-solid fa-minus"></i>
                     </button>
-                    <input type="text" id="quantity" value="1" min="1" readonly />
+                    <input type="text" class="details-quantity" value="1" min="1" readonly />
                     <button class="increment-btn">
                       <i class="fa-solid fa-plus"></i>
                     </button>
                   </div>
                   <div class="btn-wrap d-flex flex-wrap gap-4">
-                    <a href="" class="button primary-btn">Add to Cart</a>
-                    <a href="" class="button secondary-btn">Add to Wishlist</a>
+                    <a href="" class="button primary-btn details-add-cart">Add to Cart</a>
+                    <a href="" class="button secondary-btn wishlist-btn">Add to Wishlist</a>
                   </div>
                   <ul class="product-meta">
                     <li><span>SKU:</span> ${mainProduct.sku}</li>
@@ -1011,7 +1011,7 @@ productBtns.forEach((currBtn) => {
                         </button>
                         <input
                           type="text"
-                          id="quantity"
+                          class="details-quantity"
                           value="1"
                           min="1"
                           readonly
@@ -1021,8 +1021,8 @@ productBtns.forEach((currBtn) => {
                         </button>
                       </div>
                       <div class="btn-wrap d-flex flex-wrap gap-4">
-                        <a href="" class="button primary-btn">Add to Cart</a>
-                        <a href="" class="button secondary-btn"
+                        <a href="" class="button primary-btn details-add-cart">Add to Cart</a>
+                        <a href="" class="button secondary-btn wishlist-btn"
                           >Add to Wishlist</a
                         >
                       </div>
@@ -1030,7 +1030,7 @@ productBtns.forEach((currBtn) => {
                         <li><span>SKU:</span> ${product.sku}</li>
                         <li><span>Category:</span> ${product.category}</li>
                         <li>
-                          <span>Tags:</span> ${product.tags}
+                          <span>Tags:</span> ${product.tags.join(", ")}
                         </li>
                       </ul>
                     </div>
@@ -1330,3 +1330,50 @@ function calcSubtotal() {
   });
 }
 calcSubtotal();
+
+const productDetailsSec = document.querySelectorAll(".product-details-sec");
+
+productDetailsSec.forEach((currSec) => {
+  currSec.addEventListener("click", (e) => {
+    const detailsCartBtn = e.target.closest(".details-add-cart");
+    if (!detailsCartBtn) return;
+
+    e.preventDefault();
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const existingIndex = cartItems.findIndex(
+      (item) => parseInt(item.productId) === parseInt(id)
+    );
+    console.log(existingIndex);
+
+    console.log({
+      id: generateId(),
+      productId: id,
+      userId: "guest",
+      quantity: 1,
+    });
+    if (existingIndex === -1) {
+      console.log("not found");
+
+      cartItems.push({
+        id: generateId(),
+        productId: id,
+        userId: "guest",
+        quantity: 1,
+      });
+    } else {
+      console.log("found");
+
+      cartItems = cartItems.map((item, index) =>
+        index === existingIndex
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    }
+    updateCart();
+    saveCartToLocalStorage();
+    calcSubtotal();
+  });
+});
