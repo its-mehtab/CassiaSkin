@@ -1011,8 +1011,12 @@ productBtns.forEach((currBtn) => {
   currBtn.addEventListener("click", (e) => {
     const quickViewBtn = e.target.closest(".quick-view-btn");
     if (!quickViewBtn) return;
-
     productDetailsModal && (productDetailsModal.innerHTML = "");
+
+    const isWishlistActive = wishlistItems.some(
+      (currItem) => parseInt(currItem.productId) === parseInt(mainProduct.id)
+    );
+
     const clickedProduct = e.target.closest(".product-item").dataset.id;
 
     const product = findProductById(clickedProduct);
@@ -1568,7 +1572,7 @@ function updateWishlistInStorage() {
 
 const emptyCartBtn = document.querySelector(".empty-cart-btn");
 
-emptyCartBtn.addEventListener("click", (e) => {
+emptyCartBtn?.addEventListener("click", (e) => {
   e.preventDefault();
   cartItems = [];
   updateCart();
