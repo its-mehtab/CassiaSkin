@@ -1448,7 +1448,7 @@ form {
   }
 }
 
-.cart-table {
+.my-table {
   padding: 30px 30px;
   border: 1px solid #0000001a;
   border-radius: 40px;
@@ -1496,6 +1496,10 @@ form {
         color: $secondary-color;
       }
     }
+  }
+
+  .remove-btn {
+    color: $secondary-color;
   }
 }
 

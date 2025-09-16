@@ -1252,32 +1252,32 @@ form .form-control {
   justify-content: space-between;
 }
 
-.cart-table {
+.my-table {
   padding: 30px 30px;
   border: 1px solid rgba(0, 0, 0, 0.1019607843);
   border-radius: 40px;
 }
-.cart-table .cart-item {
+.my-table .cart-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding: 20px 0;
 }
-.cart-table .cart-item + .cart-item {
+.my-table .cart-item + .cart-item {
   border-top: 1px solid rgba(0, 0, 0, 0.1019607843);
 }
-.cart-table .cart-item-content h5 {
+.my-table .cart-item-content h5 {
   font-weight: 600;
   font-size: 22px;
 }
-.cart-table .cart-item-img {
+.my-table .cart-item-img {
   width: 100px;
   line-height: 0;
   border-radius: 20px;
   overflow: hidden;
 }
-.cart-table .subtotal-details {
+.my-table .subtotal-details {
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -1286,12 +1286,15 @@ form .form-control {
   padding-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.1019607843);
 }
-.cart-table .subtotal-details h4 {
+.my-table .subtotal-details h4 {
   font-size: 25px;
   font-weight: 700;
   color: #0a3366;
 }
-.cart-table .subtotal-details h4 .subtotal-price {
+.my-table .subtotal-details h4 .subtotal-price {
+  color: #f46700;
+}
+.my-table .remove-btn {
   color: #f46700;
 }
 

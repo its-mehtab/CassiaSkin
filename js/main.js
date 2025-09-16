@@ -721,6 +721,20 @@ const offerProducts = products.filter((product) => {
   return product.price.is_offer_active;
 });
 
+// Wishlist
+// ==================================================================================
+let wishlistItems = [];
+function loadWishlistFromLocalStorage() {
+  const storedWishlist = localStorage.getItem("wishlist");
+
+  if (storedWishlist) {
+    wishlistItems = JSON.parse(storedWishlist);
+  }
+}
+loadWishlistFromLocalStorage();
+// Wishlist
+// ==================================================================================
+
 offerProductsContainer && (offerProductsContainer.innerHTML = "");
 swiperContainer?.forEach((currContainer) => {
   currContainer.innerHTML = "";
@@ -729,6 +743,10 @@ allProductsContainer && (allProductsContainer.innerHTML = "");
 
 const insertProducts = (productsArry, wrapperClass, insertInto) => {
   productsArry.forEach((product) => {
+    const isWishlistActive = wishlistItems.some(
+      (currItem) => parseInt(currItem.productId) === parseInt(product.id)
+    );
+
     const productMainWrap = document.createElement("div");
     productMainWrap.className = wrapperClass;
 
@@ -744,7 +762,9 @@ const insertProducts = (productsArry, wrapperClass, insertInto) => {
                     <a href="#" class="quick-view-btn" data-bs-toggle="modal" data-bs-target="#productDetailsModal">Quick View</a>
                   </li>
                   <li>
-                    <a href="#" class="wishlist-btn">
+                    <a href="#" class="wishlist-btn ${
+                      isWishlistActive ? "active" : ""
+                    }">
                       <svg
                         width="20"
                         height="20"
@@ -875,6 +895,10 @@ if (pathname.includes("product")) {
     detailsBannerHead.textContent = mainProduct.name;
     detailsBreadcrumb.textContent = mainProduct.name;
 
+    const isWishlistActive = wishlistItems.some(
+      (currItem) => parseInt(currItem.productId) === parseInt(mainProduct.id)
+    );
+
     const detailsContent = document.querySelector(".product-details-sec .row");
     detailsContent.innerHTML = `<div class="col-lg-6">
                 <div class="product-img rounded-5 overflow-hidden">
@@ -917,7 +941,11 @@ if (pathname.includes("product")) {
                   </div>
                   <div class="btn-wrap d-flex flex-wrap gap-4">
                     <a href="" class="button primary-btn details-add-cart">Add to Cart</a>
-                    <a href="" class="button secondary-btn wishlist-btn">Add to Wishlist</a>
+                    <a href="" class="button secondary-btn wishlist-btn">${
+                      isWishlistActive
+                        ? "Remove From Wishlist"
+                        : "Add to Wishlist"
+                    }</a>
                   </div>
                   <ul class="product-meta">
                     <li><span>SKU:</span> ${mainProduct.sku}</li>
@@ -926,6 +954,37 @@ if (pathname.includes("product")) {
                   </ul>
                 </div>
               </div>`;
+
+    const wishlistBtn = detailsContent.querySelector(".wishlist-btn");
+    wishlistBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const existingIndex = wishlistItems.findIndex(
+        (currItem) => parseInt(currItem.productId) === parseInt(mainProduct.id)
+      );
+
+      console.log(existingIndex);
+      if (existingIndex === -1) {
+        console.log(mainProduct.id);
+
+        wishlistItems.push({
+          id: generateId(),
+          productId: mainProduct.id,
+          userId: "guest",
+        });
+
+        wishlistBtn.textContent = "Remove From Wishlist";
+      } else {
+        wishlistItems = wishlistItems.filter(
+          (currItem) =>
+            parseInt(currItem.productId) !== parseInt(mainProduct.id)
+        );
+        wishlistBtn.textContent = "Add to Wishlist";
+      }
+
+      updateWishlistCount();
+      updateWishlistInStorage();
+    });
 
     relatedProducts.innerHTML = "";
     const relatedProductsArray = products.filter((currProduct) => {
@@ -1010,7 +1069,11 @@ productBtns.forEach((currBtn) => {
                       <div class="btn-wrap d-flex flex-wrap gap-4">
                         <a href="" class="button primary-btn details-add-cart">Add to Cart</a>
                         <a href="" class="button secondary-btn wishlist-btn"
-                          >Add to Wishlist</a
+                          >${
+                            isWishlistActive
+                              ? "Remove From Wishlist"
+                              : "Add to Wishlist"
+                          }</a
                         >
                       </div>
                       <ul class="product-meta">
@@ -1039,6 +1102,7 @@ function generateId() {
 const cartCount = document.querySelectorAll(".cart-count");
 const removeBtns = document.querySelectorAll(".remove-btn");
 const subTotalWrap = document.querySelectorAll(".subtotal-price");
+const wishlistBtn = document.querySelectorAll(".wishlist-btn");
 
 // ===============================================================================
 // Cart Functionality
@@ -1087,7 +1151,7 @@ productBtns.forEach((currBtn) => {
 });
 
 const miniCartContainer = document.querySelector(".cart-items");
-const mainCartContainer = document.querySelector(".cart-table ul");
+const mainCartContainer = document.querySelector(".cart-sec .my-table ul");
 
 function updateCart() {
   miniCartContainer && (miniCartContainer.innerHTML = "");
@@ -1285,11 +1349,16 @@ const miniCartBtns = document.querySelector(
 );
 const mainCartBtns = document.querySelector(".subtotal-details .btn-wrap");
 
+function checkCartEmpty(cartContainer) {
+  cartContainer &&
+    (cartContainer.innerHTML = `<svg class="mb-5" enable-background="new 0 0 64 64" height="140" viewBox="0 0 64 64" width="140" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m55.60714 25.64387-23.60049 11.46694-23.6006-11.46694c.35004-.55004.85004-.99998 1.46671-1.2834l20.53381-9.98354c.99998-.48331 2.18338-.48331 3.20004 0l20.53381 9.98354c.59999.28342 1.09999.73336 1.46672 1.2834z" fill="#e09f44"/><path d="m55.60719 25.64387-23.6005 11.46694v-23.1005c.53317 0 1.09995.11669 1.59991.36662l20.53377 9.98355c.59999.28341 1.10008.73335 1.46682 1.28339z" opacity=".1"/><path d="m32.01204 37.11492v26.88508c-.55479 0-1.10958-.10666-1.6003-.3627l-20.54784-9.98597c-1.25896-.59738-2.04843-1.87769-2.04843-3.26454v-22.74564c0-.70404.21332-1.40821.59751-2.00571z" fill="#ffe691"/><path d="m56.18711 27.64115v22.74564c0 1.38685-.78947 2.66716-2.0483 3.26454l-20.52647 9.98597c-.51221.25604-1.06687.3627-1.6003.3627v-26.88508l23.59906-11.47948c.36269.5975.57601 1.30167.57601 2.00571z" fill="#ffdc6e"/><path d="m56.19044 27.64394v22.69894c0 1.41655-.79993 2.68317-2.06655 3.2998l-20.5323 9.98281c-1.00001.48327-2.18322.48327-3.19981 0l-19.41572-9.43281c13.3826 3.46642 27.09864.34992 35.98145-8.54957 6.0497-6.04971 8.33291-13.24935 9.23293-17.99917z" opacity=".1"/><g fill="#f0bd59"><path d="m22.8561 45.56063-18.22991-8.86864c-1.64163-.79863-2.16199-2.88727-1.08692-4.36274l4.87639-6.69252 23.58608 11.47436-5.49368 7.53971c-.83629 1.14775-2.37494 1.53108-3.65196.90983z"/><path d="m41.1439 45.56063 18.22992-8.86864c1.64163-.79863 2.16199-2.88727 1.08691-4.36274l-4.87639-6.69252-23.58609 11.47436 5.49368 7.53971c.83629 1.14775 2.37495 1.53108 3.65197.90983z"/></g></g><g><circle cx="32" cy="14.508" fill="#f7524b" r="14.508"/><path d="m38.7821 7.72616-.00007-.00007c-1.08027-1.08027-2.83174-1.08027-3.91201 0l-2.87007 2.87007-2.87004-2.87004c-1.08028-1.08028-2.83177-1.08027-3.91204.00003-1.08024 1.08028-1.08023 2.83172.00003 3.91198l2.87011 2.87011-2.87011 2.87011c-1.08026 1.08026-1.08027 2.8317-.00003 3.91197 1.08027 1.0803 2.83176 1.08032 3.91204.00003l2.87004-2.87004 2.87007 2.87007c1.08027 1.08027 2.83174 1.08027 3.91201 0l.00007-.00007c1.08027-1.08027 1.08027-2.83174 0-3.91201l-2.87007-2.87007 2.87007-2.87007c1.08027-1.08026 1.08027-2.83173 0-3.912z" fill="#f0f0fc"/><path d="m46.51111 14.51246c0 8-6.50664 14.50664-14.50664 14.50664-6.20807 0-11.52005-3.90391-13.5681-9.40794 5.5681 4.03203 13.20534 4.13867 18.3681.12799 4.58659-3.56263 6.59193-9.83464 5.11992-15.78672 2.81602 2.62409 4.58672 6.37865 4.58672 10.56003z" opacity=".1"/></g></g></svg> 
+                <li>Your Cart is empty.</li>`);
+}
+
 function checkEmptyCart() {
   if (cartItems.length === 0) {
-    miniCartContainer.innerHTML = "<li>Your cart is empty.</li>";
-    mainCartContainer &&
-      (mainCartContainer.innerHTML = "<li>Your cart is empty.</li>");
+    checkCartEmpty(miniCartContainer);
+    checkCartEmpty(mainCartContainer);
 
     miniCartBtns && (miniCartBtns.innerHTML = "");
     mainCartBtns && (mainCartBtns.innerHTML = "");
@@ -1300,7 +1369,7 @@ function checkEmptyCart() {
 
     mainCartBtns &&
       (mainCartBtns.innerHTML = `<a href="checkout.html" class="button primary-btn">Checkout</a>
-        <a href="#" class="button secondary-btn">Empty Cart</a>`);
+        <a href="#" class="button secondary-btn empty-cart-btn">Empty Cart</a>`);
   }
 }
 
@@ -1384,27 +1453,127 @@ productDetailsSec.forEach((currSec) => {
   });
 });
 
-const wishlistItems = [];
-
-// const wishlist = localStorage.getItem("wishlist");
-
-const wishlistBtn = document.querySelectorAll(".wishlist-btn");
-
 wishlistBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    const productId = e.target.closest(".product-item").dataset.id;
+    const productId = e.target.closest(".product-item")?.dataset.id;
 
+    if (!productId) return;
     e.preventDefault();
-    btn.classList.toggle("active");
 
-    wishlistItems.push({
-      id: generateId(),
-      productId,
-      userId: "guest",
-    });
+    const wishlistIndex = wishlistItems.findIndex(
+      (currItem) => currItem.productId == productId
+    );
+
+    if (wishlistIndex === -1) {
+      btn.classList.add("active");
+
+      wishlistItems.push({
+        id: generateId(),
+        productId,
+        userId: "guest",
+      });
+    } else {
+      btn.classList.remove("active");
+
+      wishlistItems = wishlistItems.filter((currItem) => {
+        return currItem.productId !== productId;
+      });
+    }
 
     console.log(wishlistItems);
 
-    localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
+    updateWishlistCount();
+    updateWishlistInStorage();
   });
+});
+
+const wishlistCount = document.querySelector(".wishlist-count");
+
+const updateWishlistCount = () => {
+  wishlistCount.textContent = wishlistItems.length;
+};
+updateWishlistCount();
+
+const wishlistTable = document.querySelector(".wishlist-sec .my-table ul");
+wishlistTable && (wishlistTable.innerHTML = "");
+
+function checkIfEmpty() {
+  if (wishlistItems.length === 0) {
+    wishlistTable &&
+      (wishlistTable.innerHTML = `<svg class="mb-5" enable-background="new 0 0 64 64" height="140" viewBox="0 0 64 64" width="140" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m55.60714 25.64387-23.60049 11.46694-23.6006-11.46694c.35004-.55004.85004-.99998 1.46671-1.2834l20.53381-9.98354c.99998-.48331 2.18338-.48331 3.20004 0l20.53381 9.98354c.59999.28342 1.09999.73336 1.46672 1.2834z" fill="#e09f44"/><path d="m55.60719 25.64387-23.6005 11.46694v-23.1005c.53317 0 1.09995.11669 1.59991.36662l20.53377 9.98355c.59999.28341 1.10008.73335 1.46682 1.28339z" opacity=".1"/><path d="m32.01204 37.11492v26.88508c-.55479 0-1.10958-.10666-1.6003-.3627l-20.54784-9.98597c-1.25896-.59738-2.04843-1.87769-2.04843-3.26454v-22.74564c0-.70404.21332-1.40821.59751-2.00571z" fill="#ffe691"/><path d="m56.18711 27.64115v22.74564c0 1.38685-.78947 2.66716-2.0483 3.26454l-20.52647 9.98597c-.51221.25604-1.06687.3627-1.6003.3627v-26.88508l23.59906-11.47948c.36269.5975.57601 1.30167.57601 2.00571z" fill="#ffdc6e"/><path d="m56.19044 27.64394v22.69894c0 1.41655-.79993 2.68317-2.06655 3.2998l-20.5323 9.98281c-1.00001.48327-2.18322.48327-3.19981 0l-19.41572-9.43281c13.3826 3.46642 27.09864.34992 35.98145-8.54957 6.0497-6.04971 8.33291-13.24935 9.23293-17.99917z" opacity=".1"/><g fill="#f0bd59"><path d="m22.8561 45.56063-18.22991-8.86864c-1.64163-.79863-2.16199-2.88727-1.08692-4.36274l4.87639-6.69252 23.58608 11.47436-5.49368 7.53971c-.83629 1.14775-2.37494 1.53108-3.65196.90983z"/><path d="m41.1439 45.56063 18.22992-8.86864c1.64163-.79863 2.16199-2.88727 1.08691-4.36274l-4.87639-6.69252-23.58609 11.47436 5.49368 7.53971c.83629 1.14775 2.37495 1.53108 3.65197.90983z"/></g></g><g><circle cx="32" cy="14.508" fill="#f7524b" r="14.508"/><path d="m38.7821 7.72616-.00007-.00007c-1.08027-1.08027-2.83174-1.08027-3.91201 0l-2.87007 2.87007-2.87004-2.87004c-1.08028-1.08028-2.83177-1.08027-3.91204.00003-1.08024 1.08028-1.08023 2.83172.00003 3.91198l2.87011 2.87011-2.87011 2.87011c-1.08026 1.08026-1.08027 2.8317-.00003 3.91197 1.08027 1.0803 2.83176 1.08032 3.91204.00003l2.87004-2.87004 2.87007 2.87007c1.08027 1.08027 2.83174 1.08027 3.91201 0l.00007-.00007c1.08027-1.08027 1.08027-2.83174 0-3.91201l-2.87007-2.87007 2.87007-2.87007c1.08027-1.08026 1.08027-2.83173 0-3.912z" fill="#f0f0fc"/><path d="m46.51111 14.51246c0 8-6.50664 14.50664-14.50664 14.50664-6.20807 0-11.52005-3.90391-13.5681-9.40794 5.5681 4.03203 13.20534 4.13867 18.3681.12799 4.58659-3.56263 6.59193-9.83464 5.11992-15.78672 2.81602 2.62409 4.58672 6.37865 4.58672 10.56003z" opacity=".1"/></g></g></svg> 
+                <li>Your Wishlist is empty.</li>`);
+  }
+}
+checkIfEmpty();
+
+wishlistItems &&
+  wishlistItems.forEach((curritem) => {
+    const product = findProductById(curritem.productId);
+
+    const wishlistItem = document.createElement("li");
+    wishlistItem.className = "cart-item";
+    wishlistItem.dataset.id = `${product.id}`;
+
+    wishlistItem.innerHTML = `<div class="cart-left d-flex gap-5 align-items-center">
+                  <a href="product.html?id=${product.id}" class="cart-item-img">
+                    <img src="${product.image}" alt="${product.name}">
+                  </a>
+                  <div class="cart-item-content">
+                    <a href="product.html?id=${product.id}">
+                      <h5>${product.name}</h5>
+                    </a>
+                    <div class="price">
+                      <span class="offered-price">$${product.price.offer.toFixed(
+                        2
+                      )}</span>
+                      <del class="original-price">$${product.price.original.toFixed(
+                        2
+                      )}</del>
+                    </div>
+                  </div>
+                </div>
+                <div class="cart-right d-flex gap-5 align-items-center">
+                  <button class="remove-btn">
+                    <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.5 1.5L1.5 16.5M1.5 1.5L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </button>
+                </div>`;
+
+    wishlistTable?.appendChild(wishlistItem);
+  });
+
+wishlistTable &&
+  wishlistTable.addEventListener("click", (e) => {
+    const product = e.target.closest(".cart-item");
+    const productId = product.dataset.id;
+
+    const wishlistRemoveBtn = e.target.closest(".remove-btn");
+
+    if (!wishlistRemoveBtn) return;
+    e.preventDefault();
+
+    product.remove();
+    wishlistItems = wishlistItems.filter((currItem) => {
+      return parseInt(currItem.productId) !== parseInt(productId);
+    });
+    checkIfEmpty();
+    updateWishlistCount();
+    updateWishlistInStorage();
+  });
+
+function updateWishlistInStorage() {
+  localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
+}
+
+const emptyCartBtn = document.querySelector(".empty-cart-btn");
+
+emptyCartBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  cartItems = [];
+  updateCart();
+  saveCartToLocalStorage();
+  updateCartCount();
+  checkEmptyCart();
+  calcSubtotal();
 });
