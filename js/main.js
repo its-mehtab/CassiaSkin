@@ -877,6 +877,11 @@ insertProducts(
   allProductsContainer
 );
 
+const productBtns = document.querySelectorAll(".product-icons");
+const productDetailsModal = document.querySelector(
+  "#productDetailsModal .product-details-sec"
+);
+
 // ======================================================================
 const pathname = window.location.pathname;
 if (pathname.includes("product")) {
@@ -956,35 +961,7 @@ if (pathname.includes("product")) {
               </div>`;
 
     const wishlistBtn = detailsContent.querySelector(".wishlist-btn");
-    wishlistBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const existingIndex = wishlistItems.findIndex(
-        (currItem) => parseInt(currItem.productId) === parseInt(mainProduct.id)
-      );
-
-      console.log(existingIndex);
-      if (existingIndex === -1) {
-        console.log(mainProduct.id);
-
-        wishlistItems.push({
-          id: generateId(),
-          productId: mainProduct.id,
-          userId: "guest",
-        });
-
-        wishlistBtn.textContent = "Remove From Wishlist";
-      } else {
-        wishlistItems = wishlistItems.filter(
-          (currItem) =>
-            parseInt(currItem.productId) !== parseInt(mainProduct.id)
-        );
-        wishlistBtn.textContent = "Add to Wishlist";
-      }
-
-      updateWishlistCount();
-      updateWishlistInStorage();
-    });
+    wishlistBtn.addEventListener("click", detailsWishlistHandler);
 
     relatedProducts.innerHTML = "";
     const relatedProductsArray = products.filter((currProduct) => {
@@ -1002,10 +979,33 @@ if (pathname.includes("product")) {
   }
 }
 
-const productBtns = document.querySelectorAll(".product-icons");
-const productDetailsModal = document.querySelector(
-  "#productDetailsModal .product-details-sec"
-);
+function detailsWishlistHandler(e) {
+  e.preventDefault();
+
+  const existingIndex = wishlistItems.findIndex(
+    (currItem) => parseInt(currItem.productId) === parseInt(mainProduct.id)
+  );
+
+  if (existingIndex === -1) {
+    console.log(mainProduct.id);
+
+    wishlistItems.push({
+      id: generateId(),
+      productId: mainProduct.id,
+      userId: "guest",
+    });
+
+    wishlistBtn.textContent = "Remove From Wishlist";
+  } else {
+    wishlistItems = wishlistItems.filter(
+      (currItem) => parseInt(currItem.productId) !== parseInt(mainProduct.id)
+    );
+    wishlistBtn.textContent = "Add to Wishlist";
+  }
+
+  updateWishlistCount();
+  updateWishlistInStorage();
+}
 
 productBtns.forEach((currBtn) => {
   currBtn.addEventListener("click", (e) => {
@@ -1013,11 +1013,13 @@ productBtns.forEach((currBtn) => {
     if (!quickViewBtn) return;
     productDetailsModal && (productDetailsModal.innerHTML = "");
 
+    const clickedProduct = e.target.closest(".product-item").dataset.id;
+
     const isWishlistActive = wishlistItems.some(
-      (currItem) => parseInt(currItem.productId) === parseInt(mainProduct.id)
+      (currItem) => parseInt(currItem.productId) === parseInt(clickedProduct)
     );
 
-    const clickedProduct = e.target.closest(".product-item").dataset.id;
+    console.log(isWishlistActive);
 
     const product = findProductById(clickedProduct);
 
@@ -1090,6 +1092,11 @@ productBtns.forEach((currBtn) => {
                     </div>
                   </div>
                 </div>`;
+
+    const wishlistBtn = detailsModalContent.querySelector(".wishlist-btn");
+    wishlistBtn.addEventListener("click", detailsWishlistHandler);
+
+    productDetailsModal && (productDetailsModal.dataset.id = clickedProduct);
 
     productDetailsModal?.appendChild(detailsModalContent);
   });
@@ -1422,12 +1429,14 @@ productDetailsSec.forEach((currSec) => {
 productDetailsSec.forEach((currSec) => {
   currSec.addEventListener("click", (e) => {
     const detailsCartBtn = e.target.closest(".details-add-cart");
+
     if (!detailsCartBtn) return;
 
     e.preventDefault();
 
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+    const id = productDetailsModal.dataset.id || params.get("id");
+
     const quantityInput = currSec.querySelector(".details-quantity").value;
 
     const existingIndex = cartItems.findIndex(
